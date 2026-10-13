@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #0891b2;
+  --color-secondary: #7c3aed;
+  --color-accent: #e11d48;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-container: #f1f5f9;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-gradient-start: #0891b2;
+  --color-gradient-end: #7c3aed;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Geist', monospace;
+  --border-radius: 0.5rem;
+}
+
+.dark {
+  --color-primary: #06b6d4;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f43f5e;
+  --color-background: #0e0e10;
+  --color-surface: #131315;
+  --color-surface-container: #201f22;
+  --color-surface-container-high: #2a2a2c;
+  --color-surface-container-lowest: #0e0e10;
+  --color-text: #e5e1e4;
+  --color-muted: #869397;
+  --color-border: #3d494c;
+  --color-gradient-start: #06b6d4;
+  --color-gradient-end: #8b5cf6;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Geist', monospace;
+  --border-radius: 0.5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-heading);
+}
+
+code, kbd, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom scrollbar for dense tables and drawers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

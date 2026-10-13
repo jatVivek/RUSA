@@ -1,0 +1,985 @@
+{
+  "admins": [
+    {
+      "name": "Vance R. Sterling",
+      "email": "admin@synthetix.ai",
+      "passwordHash": "$2b$10$GPMgPBcUdfhGTmEDnwTMTOdvf2PRpxSsNtSMSbHv8nYrvFFVWtuIm",
+      "role": "superadmin",
+      "_id": "id_ylf4irh0rmv6jj711",
+      "createdAt": "2026-10-13T10:31:07.861Z",
+      "updatedAt": "2026-10-13T10:31:07.861Z"
+    }
+  ],
+  "sitesettingss": [
+    {
+      "siteTitle": "Synthetix.studio",
+      "tagline": "Modern Web Agency & High-Performance Engineering Studio",
+      "logoLight": "https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ",
+      "logoDark": "https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ",
+      "favicon": "https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ",
+      "seoTitle": "Synthetix Studio | High-Performance Web Engineering & UI/UX",
+      "seoDescription": "Premier full-stack web engineering and UI/UX studio building modern SaaS platforms, headless e-commerce, and high-performance digital products for venture-backed startups and enterprises.",
+      "ogImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU",
+      "footerText": "© 2025 Synthetix Studio Inc. High-Performance Web Agency.",
+      "contactEmail": "founder@synthetix.studio",
+      "phone": "+1 (415) 890-4280",
+      "address": "San Francisco, CA • Orbital Operations Center",
+      "_id": "id_8defndyvymv6iwpg7",
+      "createdAt": "2026-10-13T10:13:38.647Z",
+      "updatedAt": "2026-10-13T10:31:07.864Z"
+    }
+  ],
+  "themes": [
+    {
+      "activePreset": "Obsidian Aurora",
+      "defaultMode": "dark",
+      "fontHeading": "Space Grotesk",
+      "fontBody": "Inter",
+      "fontMono": "Geist",
+      "borderRadius": "0.5rem",
+      "colors": {
+        "dark": {
+          "primary": "#06b6d4",
+          "secondary": "#8b5cf6",
+          "accent": "#f43f5e",
+          "background": "#0e0e10",
+          "surface": "#1c1b1d",
+          "text": "#e5e1e4",
+          "muted": "#869397",
+          "border": "#3d494c",
+          "gradientStart": "#06b6d4",
+          "gradientEnd": "#8b5cf6"
+        },
+        "light": {
+          "primary": "#0891b2",
+          "secondary": "#7c3aed",
+          "accent": "#e11d48",
+          "background": "#f8fafc",
+          "surface": "#ffffff",
+          "text": "#0f172a",
+          "muted": "#64748b",
+          "border": "#e2e8f0",
+          "gradientStart": "#0891b2",
+          "gradientEnd": "#7c3aed"
+        }
+      },
+      "presets": {
+        "Obsidian Aurora": {
+          "name": "Obsidian Aurora",
+          "dark": {
+            "primary": "#06b6d4",
+            "secondary": "#8b5cf6",
+            "accent": "#f43f5e",
+            "background": "#0e0e10",
+            "surface": "#1c1b1d",
+            "text": "#e5e1e4",
+            "muted": "#869397",
+            "border": "#3d494c",
+            "gradientStart": "#06b6d4",
+            "gradientEnd": "#8b5cf6"
+          },
+          "light": {
+            "primary": "#0891b2",
+            "secondary": "#7c3aed",
+            "accent": "#e11d48",
+            "background": "#f8fafc",
+            "surface": "#ffffff",
+            "text": "#0f172a",
+            "muted": "#64748b",
+            "border": "#e2e8f0",
+            "gradientStart": "#0891b2",
+            "gradientEnd": "#7c3aed"
+          }
+        },
+        "Cyber Neon": {
+          "name": "Cyber Neon",
+          "dark": {
+            "primary": "#10b981",
+            "secondary": "#06b6d4",
+            "accent": "#f59e0b",
+            "background": "#0a0a0f",
+            "surface": "#13141f",
+            "text": "#f1f5f9",
+            "muted": "#94a3b8",
+            "border": "#1e293b",
+            "gradientStart": "#10b981",
+            "gradientEnd": "#06b6d4"
+          },
+          "light": {
+            "primary": "#059669",
+            "secondary": "#0284c7",
+            "accent": "#d97706",
+            "background": "#f0fdf4",
+            "surface": "#ffffff",
+            "text": "#064e3b",
+            "muted": "#64748b",
+            "border": "#dcfce7",
+            "gradientStart": "#059669",
+            "gradientEnd": "#0284c7"
+          }
+        },
+        "Hyper Minimal": {
+          "name": "Hyper Minimal",
+          "dark": {
+            "primary": "#f8fafc",
+            "secondary": "#94a3b8",
+            "accent": "#38bdf8",
+            "background": "#09090b",
+            "surface": "#18181b",
+            "text": "#f4f4f5",
+            "muted": "#71717a",
+            "border": "#27272a",
+            "gradientStart": "#f8fafc",
+            "gradientEnd": "#94a3b8"
+          },
+          "light": {
+            "primary": "#09090b",
+            "secondary": "#475569",
+            "accent": "#0284c7",
+            "background": "#ffffff",
+            "surface": "#f4f4f5",
+            "text": "#18181b",
+            "muted": "#71717a",
+            "border": "#e4e4e7",
+            "gradientStart": "#09090b",
+            "gradientEnd": "#475569"
+          }
+        },
+        "Midnight Emerald": {
+          "name": "Midnight Emerald",
+          "dark": {
+            "primary": "#4edea3",
+            "secondary": "#38bdf8",
+            "accent": "#ec4899",
+            "background": "#091310",
+            "surface": "#10221c",
+            "text": "#e6f4ef",
+            "muted": "#7aa092",
+            "border": "#1b3b31",
+            "gradientStart": "#4edea3",
+            "gradientEnd": "#38bdf8"
+          },
+          "light": {
+            "primary": "#059669",
+            "secondary": "#0284c7",
+            "accent": "#db2777",
+            "background": "#f7fee7",
+            "surface": "#ffffff",
+            "text": "#064e3b",
+            "muted": "#4d7c0f",
+            "border": "#d9f99d",
+            "gradientStart": "#059669",
+            "gradientEnd": "#0284c7"
+          }
+        }
+      },
+      "_id": "id_i0jkixj18mv6iwpg7",
+      "createdAt": "2026-10-13T10:13:38.647Z",
+      "updatedAt": "2026-10-13T10:31:07.866Z"
+    }
+  ],
+  "sections": [
+    {
+      "key": "hero",
+      "title": "Hero Stage (Headline & Metrics)",
+      "subtitle": "Orbital canvas and value proposition",
+      "order": 0,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_40sj2tgulmv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "about",
+      "title": "Trusted By & About Studio",
+      "subtitle": "Social proof logo reel and engineering philosophy",
+      "order": 1,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_pamnrgmhemv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "products",
+      "title": "Built Products & Client Work",
+      "subtitle": "Flagship production platforms we have shipped",
+      "order": 2,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_q8crluuevmv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "services",
+      "title": "Capabilities & Services",
+      "subtitle": "Core agency specialties from 0-1 to enterprise scale",
+      "order": 3,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_x5lba8ok3mv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "experience",
+      "title": "4-Step Delivery Process",
+      "subtitle": "Deterministic bi-weekly sprint methodology",
+      "order": 4,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_s57653vfkmv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "skills",
+      "title": "Our Tech Arsenal & Stack",
+      "subtitle": "Modern frontend, backend, and cloud standards",
+      "order": 5,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_3qs0njrqtmv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "testimonials",
+      "title": "Client Verifications & Proof",
+      "subtitle": "Testimonials from technical founders and VPs",
+      "order": 6,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_223nvznqwmv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "blog",
+      "title": "Engineering Papers & Blog",
+      "subtitle": "In-depth architectural breakdowns and benchmarks",
+      "order": 7,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_vgchjj7t8mv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    },
+    {
+      "key": "contact",
+      "title": "Project Intake & Scoping Form",
+      "subtitle": "High-converting interactive lead capture",
+      "order": 8,
+      "isActive": true,
+      "isMandatory": true,
+      "_id": "id_zc798v2ammv6jj71b",
+      "createdAt": "2026-10-13T10:31:07.871Z",
+      "updatedAt": "2026-10-13T10:31:07.871Z"
+    }
+  ],
+  "heros": [
+    {
+      "badge": "Full-Stack Web Engineering & UI/UX Studio",
+      "badgeStatus": "Q3 ACTIVE",
+      "headline": "We Build High-Performance Web Applications That Scale Your Business",
+      "highlightText": "High-Performance Web Applications",
+      "subheadline": "Synthetix is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences for venture-backed startups and modern enterprises.",
+      "primaryCtaText": "Schedule Scoping Call",
+      "primaryCtaUrl": "#audit-booking",
+      "secondaryCtaText": "Explore Client Work",
+      "secondaryCtaUrl": "#featured-projects",
+      "metrics": [
+        {
+          "value": "99.8%",
+          "label": "On-Time Sprint Delivery",
+          "colorClass": "text-primary"
+        },
+        {
+          "value": "50+",
+          "label": "Web Apps Shipped",
+          "colorClass": "text-secondary"
+        },
+        {
+          "value": "98+",
+          "label": "Avg Lighthouse Score",
+          "colorClass": "text-tertiary"
+        },
+        {
+          "value": "Zero",
+          "label": "Tech Debt Guarantee",
+          "colorClass": "text-on-surface"
+        }
+      ],
+      "previewAppTitle": "Prism Cloud Web App",
+      "previewAppSubtitle": "React 19 • Next.js 15 • Tailwind",
+      "previewAppUrl": "https://app.prism-analytics.io/dashboard",
+      "previewAppImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU",
+      "order": 0,
+      "isActive": true,
+      "_id": "id_0b3m20lzwmv6jj71e",
+      "createdAt": "2026-10-13T10:31:07.874Z",
+      "updatedAt": "2026-10-13T10:31:07.874Z"
+    }
+  ],
+  "abouts": [
+    {
+      "title": "About Synthetix Studio",
+      "headline": "Engineered for Velocity, Scale, and Polish",
+      "bio": "We are an elite software collective deploying production-grade web systems, resilient cloud infrastructure, and pixel-perfect design systems. We operate with radical transparency, continuous deployment, and fixed-price guarantees.",
+      "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuCpeLYWljWwHHEy04ie4U-vx2scsaDxGmQLlpJVGmc_LJhtvGJsyBzJhEklZ3PhYmNlLuA0qrBAwj0tV5hpUhxf_xYCGTIk-21Hp1Q4ntRh7TIRK3jzBkEWFyuxhr52OJ3GSMSskLgstjWwn054Qacke3htz0VApieLIqCWQ-vsoaV8DmJG1-ObfJhL0FNlUiifCj5vkbH6uyHTsGV_4g_3NFUjgcdhNkJpGCK_y4vDgc_lUdnns1A",
+      "stats": [
+        {
+          "label": "Latency Reduction",
+          "value": "77%"
+        },
+        {
+          "label": "Annual Client Savings",
+          "value": "$1.4M"
+        },
+        {
+          "label": "Uptime SLA",
+          "value": "99.99%"
+        }
+      ],
+      "order": 0,
+      "isActive": true,
+      "_id": "id_w96p5s76ymv6jj71g",
+      "createdAt": "2026-10-13T10:31:07.876Z",
+      "updatedAt": "2026-10-13T10:31:07.876Z"
+    }
+  ],
+  "products": [
+    {
+      "title": "Prism Analytics",
+      "description": "Enterprise real-time telemetry and reporting dashboard handling 100M+ events monthly. Engineered with sub-50ms query responses, 60fps virtualization grids, and complex permission gating.",
+      "images": [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU"
+      ],
+      "url": "https://prism-analytics.example.com",
+      "slug": "prism-analytics",
+      "category": "B2B SAAS PLATFORM",
+      "statusBadge": "LIVE IN PROD",
+      "metricHighlight": "+240% User Activation",
+      "metricLabel": "<50ms Query Latency",
+      "tags": [
+        "Next.js 15 App Router",
+        "TypeScript Strict",
+        "Tailwind CSS",
+        "Go Microservices"
+      ],
+      "order": 0,
+      "isActive": true,
+      "_id": "id_81oh7gekvmv6jj71j",
+      "createdAt": "2026-10-13T10:31:07.879Z",
+      "updatedAt": "2026-10-13T10:31:07.879Z"
+    },
+    {
+      "title": "Aura Commerce",
+      "description": "Ultra-fast headless luxury retail store featuring an interactive real-time 3D product visualizer, multi-currency localization across 24 regions, and instant zero-friction checkout.",
+      "images": [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuBhjzkRdQ4wRb4iTyOO-0H4Mo9ovMLFVWofpZOMvlJMUVlOjM9pRxC9tvv9I1r9vLotFwS0gzt8oD113AUkAoerbKhpPoqJO79eo0xb-HW628TEbKCGhMni4nSHxNJQY1o0C129_JuzM9uZAxHT5cuBJ_8ZQcw3eO_CMt9SdJlJyv_lKegeeJUYijtyps3UggE0nU4nCUBLPjI4yRvpqapNzPY6wm58kRcyVJwqTRDPPGZSuqwqmHE"
+      ],
+      "url": "https://aura-commerce.example.com",
+      "slug": "aura-commerce",
+      "category": "HEADLESS E-COMMERCE",
+      "statusBadge": "GLOBAL LAUNCH",
+      "metricHighlight": "+38% Mobile Conversion",
+      "metricLabel": "99 Lighthouse Score",
+      "tags": [
+        "Shopify Plus Headless",
+        "Next.js Edge",
+        "Three.js / WebGL",
+        "Stripe Custom"
+      ],
+      "order": 1,
+      "isActive": true,
+      "_id": "id_9y8a5lzypmv6jj71j",
+      "createdAt": "2026-10-13T10:31:07.879Z",
+      "updatedAt": "2026-10-13T10:31:07.879Z"
+    },
+    {
+      "title": "VaultPay Neo-Banking",
+      "description": "Compliant banking portal built for seamless international treasury management, multi-user role access controls, automated ACH transfers, and live audit telemetry.",
+      "images": [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuDbSAZEGKCWxTsuvm-wR0TGavKYBYdJpOkaktYxuUuxJTn-zjWoiZXK7sfgdXHbKqDoHymlO3tJZW0mUxT873e-qEQ3s-QEuvtfgT2QVsD9oCmojPbw86gMS2JPSOOdCp1XClTjSNAxFH2QWrZDzntCKuRl1rNW3CnOZkcUntBqQZ1CVwGsMtPw-7biWjvN_5HiBvKxI47ZZ2POgJwI0Qb2rqRa21rQfRheFkat4o-lRmVCsQc7igc"
+      ],
+      "url": "https://vaultpay.example.com",
+      "slug": "vaultpay-banking",
+      "category": "FINTECH WEB PORTAL",
+      "statusBadge": "SOC2 CERTIFIED",
+      "metricHighlight": "$180M+ Volume",
+      "metricLabel": "99.99% Availability",
+      "tags": [
+        "React 19",
+        "Node.js Enterprise",
+        "PostgreSQL",
+        "Plaid / Webhooks"
+      ],
+      "order": 2,
+      "isActive": true,
+      "_id": "id_317vj4l24mv6jj71j",
+      "createdAt": "2026-10-13T10:31:07.879Z",
+      "updatedAt": "2026-10-13T10:31:07.879Z"
+    },
+    {
+      "title": "Novus Health Telehealth",
+      "description": "Secure video consultation platform, interactive patient chart management, and instant prescription routing. Built from zero to production launch in 6 rapid sprint cycles.",
+      "images": [
+        "https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ"
+      ],
+      "url": "",
+      "slug": "novus-health",
+      "category": "HEALTHTECH WEB APP",
+      "statusBadge": "HIPAA COMPLIANT",
+      "metricHighlight": "45k+ Active Patients",
+      "metricLabel": "Shipped in 6 Weeks",
+      "tags": [
+        "Next.js 15",
+        "WebRTC Video",
+        "HIPAA Cloud VPC",
+        "Tailwind CSS"
+      ],
+      "order": 3,
+      "isActive": true,
+      "_id": "id_3w553vompmv6jj71j",
+      "createdAt": "2026-10-13T10:31:07.879Z",
+      "updatedAt": "2026-10-13T10:31:07.879Z"
+    },
+    {
+      "title": "NeuralStream V3",
+      "description": "Sub-80ms real-time multi-modal diffusion pipeline handling 45M daily inferences for an enterprise generative suite. Fused custom TensorRT-LLM kernels and client-side WebGPU decoding.",
+      "images": [
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuDovZnkwSIWfH25osOnV4OgjZhxZPV-6_xngTLo1Iv23wSR4Vi_lHJI9eO45EVG9ZzdPm7D8H8ElrrNnYuJRKycHlq6_8jLy9fId0ktesUCt8iQj7YlGwrUbu2XQqIpQsBKK3s5QL5wNuVeuhMzlh3ckERKwook_pSliO9Vboc7TK3C4Vyy2olPvOQUbwtey5Wn1PeOGx00kq1mrTF-lA0X2M4opNRQvagUEsIOv7FbtUrrZmZLYYI"
+      ],
+      "url": "https://neuralstream.example.com",
+      "slug": "neuralstream-v3",
+      "category": "WEBGPU + DISTRIBUTED CLUSTER",
+      "statusBadge": "PRODUCTION LIVE v3.4",
+      "metricHighlight": "4.2x Faster Generation",
+      "metricLabel": "78ms P95 Sustained",
+      "tags": [
+        "PyTorch 2.3+",
+        "TensorRT-LLM",
+        "WebGPU WGSL",
+        "Rust Anycast"
+      ],
+      "order": 4,
+      "isActive": true,
+      "_id": "id_0j0ytmo54mv6jj71j",
+      "createdAt": "2026-10-13T10:31:07.879Z",
+      "updatedAt": "2026-10-13T10:31:07.879Z"
+    }
+  ],
+  "services": [
+    {
+      "title": "Full-Stack SaaS & Web Applications",
+      "description": "From 0 to 1 MVP builds to enterprise platforms. Clean domain architectures, secure authentications, automated CI/CD pipelines, and multi-tenant database designs.",
+      "icon": "web",
+      "tag": "Sprint Ready",
+      "badgeColor": "primary",
+      "order": 0,
+      "isActive": true,
+      "_id": "id_hlqw8tubnmv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    },
+    {
+      "title": "High-Conversion Marketing & Flagship Sites",
+      "description": "Headless CMS integrations (Sanity, Contentful), silky smooth scroll storytelling, interactive WebGL accents, and ultra-fast Jamstack delivery that turns visitors into pipeline.",
+      "icon": "rocket_launch",
+      "tag": "Conversion Focused",
+      "badgeColor": "secondary",
+      "order": 1,
+      "isActive": true,
+      "_id": "id_0swqjy0iimv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    },
+    {
+      "title": "UI/UX Design Systems & Frontend",
+      "description": "Figma tokens translated into pixel-perfect accessible component libraries. Micro-interactions, dark/light themes, keyboard accessibility (WCAG AA), and fluid motion.",
+      "icon": "palette",
+      "tag": "Design System Ready",
+      "badgeColor": "tertiary",
+      "order": 2,
+      "isActive": true,
+      "_id": "id_xxces5g6xmv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    },
+    {
+      "title": "Performance & Core Web Vitals Audits",
+      "description": "Deep codebase refactoring, bundle size trimming, dynamic code splitting, server-side render cache strategies, and optimizing LCP/INP scores for maximum Google rankings.",
+      "icon": "speed",
+      "tag": "Avg 98+ Lighthouse",
+      "badgeColor": "primary",
+      "order": 3,
+      "isActive": true,
+      "_id": "id_8j9eot1k6mv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    },
+    {
+      "title": "API Development & Cloud Infrastructure",
+      "description": "Serverless and Edge compute architectures on Vercel and Cloudflare, robust REST and GraphQL APIs, PostgreSQL schema design, Redis caches, and real-time WebSockets.",
+      "icon": "api",
+      "tag": "Edge & Serverless",
+      "badgeColor": "secondary",
+      "order": 4,
+      "isActive": true,
+      "_id": "id_7qyby7vn7mv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    },
+    {
+      "title": "Sprint Augmentation & Fractional Lead",
+      "description": "Need immediate firepower? Embed senior full-stack web architects directly into your engineering standups to hit critical investor deadlines and unblock architecture jams.",
+      "icon": "group_add",
+      "tag": "Embedded Senior Devs",
+      "badgeColor": "tertiary",
+      "order": 5,
+      "isActive": true,
+      "_id": "id_82evqtwuamv6jj71l",
+      "createdAt": "2026-10-13T10:31:07.881Z",
+      "updatedAt": "2026-10-13T10:31:07.881Z"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Next.js 15",
+      "category": "Frontend & UI",
+      "level": 98,
+      "icon": "code",
+      "tags": [
+        "App Router",
+        "RSC",
+        "Server Actions"
+      ],
+      "order": 0,
+      "isActive": true,
+      "_id": "id_b8ore7wzmmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "React 19",
+      "category": "Frontend & UI",
+      "level": 96,
+      "icon": "code",
+      "tags": [
+        "Hooks",
+        "Concurrent Mode",
+        "Compiler"
+      ],
+      "order": 1,
+      "isActive": true,
+      "_id": "id_aimb33uqgmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "TypeScript 5",
+      "category": "Frontend & UI",
+      "level": 95,
+      "icon": "code",
+      "tags": [
+        "Strict Mode",
+        "Generics",
+        "Type Safety"
+      ],
+      "order": 2,
+      "isActive": true,
+      "_id": "id_alxeqi5armv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "Frontend & UI",
+      "level": 99,
+      "icon": "palette",
+      "tags": [
+        "v4 Engine",
+        "CSS Variables",
+        "Tokens"
+      ],
+      "order": 3,
+      "isActive": true,
+      "_id": "id_4jxruxxf4mv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Framer Motion",
+      "category": "Frontend & UI",
+      "level": 94,
+      "icon": "auto_awesome",
+      "tags": [
+        "Layout Animations",
+        "Scroll Reveal"
+      ],
+      "order": 4,
+      "isActive": true,
+      "_id": "id_fsem9yjm0mv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Node.js & Express",
+      "category": "Backend & DB",
+      "level": 97,
+      "icon": "dns",
+      "tags": [
+        "REST",
+        "Microservices",
+        "Clean Architecture"
+      ],
+      "order": 5,
+      "isActive": true,
+      "_id": "id_ex5ao7ne1mv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "PostgreSQL & Drizzle",
+      "category": "Backend & DB",
+      "level": 92,
+      "icon": "database",
+      "tags": [
+        "Relational",
+        "Migrations",
+        "Indexes"
+      ],
+      "order": 6,
+      "isActive": true,
+      "_id": "id_utpd8uznpmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Redis Caching",
+      "category": "Backend & DB",
+      "level": 90,
+      "icon": "dataset",
+      "tags": [
+        "Session Store",
+        "Rate Limiting",
+        "Pub/Sub"
+      ],
+      "order": 7,
+      "isActive": true,
+      "_id": "id_gfayhbe10mv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Vercel Enterprise",
+      "category": "Cloud & Deployment",
+      "level": 96,
+      "icon": "cloud",
+      "tags": [
+        "Edge Network",
+        "CI/CD",
+        "Analytics"
+      ],
+      "order": 8,
+      "isActive": true,
+      "_id": "id_qmi4hi9fmmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Cloudflare Workers",
+      "category": "Cloud & Deployment",
+      "level": 93,
+      "icon": "cloud_sync",
+      "tags": [
+        "Edge Compute",
+        "DDoS Protection",
+        "WAF"
+      ],
+      "order": 9,
+      "isActive": true,
+      "_id": "id_rf71mbuohmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    },
+    {
+      "name": "Stripe Payments",
+      "category": "Cloud & Deployment",
+      "level": 95,
+      "icon": "payments",
+      "tags": [
+        "Custom Checkout",
+        "Billing",
+        "Webhooks"
+      ],
+      "order": 10,
+      "isActive": true,
+      "_id": "id_9c9hru5pvmv6jj71n",
+      "createdAt": "2026-10-13T10:31:07.883Z",
+      "updatedAt": "2026-10-13T10:31:07.883Z"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "“Synthetix shipped our entire multi-tenant SaaS platform two weeks ahead of schedule. Their code quality and design craft are unmatched.”",
+      "authorName": "Marcus Chen",
+      "authorRole": "VP of Engineering",
+      "company": "Prism Analytics",
+      "initials": "MC",
+      "badgeText": "2 Weeks Ahead of Schedule",
+      "badgeColor": "primary",
+      "order": 0,
+      "isActive": true,
+      "_id": "id_zo8li7j08mv6jj71q",
+      "createdAt": "2026-10-13T10:31:07.886Z",
+      "updatedAt": "2026-10-13T10:31:07.886Z"
+    },
+    {
+      "quote": "“Our conversion rate jumped 38% immediately after launching the headless storefront Synthetix engineered for us. The site is unbelievably fast.”",
+      "authorName": "Elena Rostova",
+      "authorRole": "Founder & CEO",
+      "company": "Aura Commerce",
+      "initials": "ER",
+      "badgeText": "+38% Mobile Conversion",
+      "badgeColor": "secondary",
+      "order": 1,
+      "isActive": true,
+      "_id": "id_b70fvrdepmv6jj71q",
+      "createdAt": "2026-10-13T10:31:07.886Z",
+      "updatedAt": "2026-10-13T10:31:07.886Z"
+    },
+    {
+      "quote": "“Working with Synthetix felt like having an elite Silicon Valley engineering team embedded directly into our startup. Zero fluff, just flawless web software.”",
+      "authorName": "Julian Vance, Ph.D.",
+      "authorRole": "CTO & Co-Founder",
+      "company": "Generative AI Creative Suite",
+      "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuAFce3FDHOdDSmHb4OHxii29U3BNyNCXk1IznEjtxIOMfXbMMPgNtt4WpIK9WMibDr1J-FP_gBkBicykJuAETUyN7B7c9rWaz7XcER9FyC_dAY9ih4FCBqElCJZgrgEslJn8XPEyGP7vmw-IWstAYNKz1vVnABpcnreeNVo0K95dR95n9jdyMaKQF-Db4DgEIS1B4-_r4TZAtKDM4ANnfZBP-6cCrrbGl-1gjD83X172It8qIC_E2Y",
+      "initials": "JV",
+      "badgeText": "99.94% User Delight SLA",
+      "badgeColor": "tertiary",
+      "order": 2,
+      "isActive": true,
+      "_id": "id_ht3k2ljppmv6jj71q",
+      "createdAt": "2026-10-13T10:31:07.886Z",
+      "updatedAt": "2026-10-13T10:31:07.886Z"
+    }
+  ],
+  "experiences": [
+    {
+      "company": "Synthetix Studio Core Delivery",
+      "role": "Phase 01: Discovery & Blueprint",
+      "period": "Week 1",
+      "description": "We audit your product requirements, create technical architecture diagrams, define exact sprint milestones, and supply a fixed-cost timeline.",
+      "achievements": [
+        "Technical specification document",
+        "System architecture schema",
+        "Sprint milestone timeline"
+      ],
+      "order": 0,
+      "isActive": true,
+      "_id": "id_szpntnu7qmv6jj71s",
+      "createdAt": "2026-10-13T10:31:07.888Z",
+      "updatedAt": "2026-10-13T10:31:07.888Z"
+    },
+    {
+      "company": "Synthetix Studio Core Delivery",
+      "role": "Phase 02: Prototyping & Design",
+      "period": "Week 2–3",
+      "description": "High-fidelity Figma prototypes, clickable user flows, component token architecture, and stakeholder design reviews before writing a single line of code.",
+      "achievements": [
+        "Figma design token library",
+        "Interactive clickable prototype",
+        "User testing validation"
+      ],
+      "order": 1,
+      "isActive": true,
+      "_id": "id_4q31j3sc3mv6jj71s",
+      "createdAt": "2026-10-13T10:31:07.888Z",
+      "updatedAt": "2026-10-13T10:31:07.888Z"
+    },
+    {
+      "company": "Synthetix Studio Core Delivery",
+      "role": "Phase 03: Production Engineering",
+      "period": "Week 4–7",
+      "description": "Bi-weekly sprint demos on live staging links. Automated unit and end-to-end testing, peer code reviews, and stringent security audits.",
+      "achievements": [
+        "Continuous staging deployments",
+        "Automated E2E test suite",
+        "Production-ready database & auth"
+      ],
+      "order": 2,
+      "isActive": true,
+      "_id": "id_ri200yrximv6jj71s",
+      "createdAt": "2026-10-13T10:31:07.888Z",
+      "updatedAt": "2026-10-13T10:31:07.888Z"
+    },
+    {
+      "company": "Synthetix Studio Core Delivery",
+      "role": "Phase 04: Launch & Evolution",
+      "period": "Week 8+",
+      "description": "Zero-downtime production deployment, Core Web Vitals telemetry tracking, full IP and code handover, plus ongoing post-launch maintenance sprints.",
+      "achievements": [
+        "100% Code & Asset handover",
+        "Lighthouse 98+ score signoff",
+        "Dedicated 30-day warranty support"
+      ],
+      "order": 3,
+      "isActive": true,
+      "_id": "id_q3opmyqe3mv6jj71s",
+      "createdAt": "2026-10-13T10:31:07.888Z",
+      "updatedAt": "2026-10-13T10:31:07.888Z"
+    }
+  ],
+  "blogs": [
+    {
+      "title": "Deploying Sub-50ms Speculative Decoding in High-Concurrency Production Environments",
+      "slug": "speculative-decoding-production",
+      "excerpt": "An architectural breakdown of draft-model calibration, paged KV-cache pinning on sparse clusters, and eliminating memory bandwidth bottlenecks under 10k simultaneous inference requests.",
+      "content": "# Deploying Sub-50ms Speculative Decoding in High-Concurrency Production Environments\n\nStandard Large Language Model inference remains notoriously memory-bandwidth bound. In token-by-token autoregressive decoding, every newly minted token forces high-bandwidth memory (HBM3e) to stream all model weights through compute cores for a single vector-matrix operation.\n\nSpeculative decoding breaks this limitation by decoupling draft generation from full verification. A compact, sovereign draft model guesses K sequential tokens ahead. The large target model then evaluates the draft sequence in a single forward pass—converting K memory-bound operations into one highly parallel compute-bound matrix multiplication.\n\n### Architectural Takeaways\nSpeculative speedup is fundamentally determined by the ratio of Target Forward Compute Time to Draft Token Time. Maintaining asymmetric draft-to-target parameter ratios between 1:8 and 1:12 remains the optimal operational envelope.",
+      "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAXmSZ94v_M04GhLcnLoA_K4Ncag4bbtM-AFxUrPHFmxEzeznXNMwPZCOnR7MiZ-gj9FpwT9f8cXyG1ZcUxYS1OMPL0E8BEjDSCCG57gfglehilPrK03-LG6Rrxw0D-rq7jqlUErdSe0Si_MOK1ijyPukXVrBE8OZgX5ENOFPop5cMmJ07foicV7nMCwDzlOxkv1zNEpB0LOE7qLP1mSfpfps3JDzJB8Ps68iX2bbaPHSYUHvviN18",
+      "tags": [
+        "High-Concurrency LLMs",
+        "Inference Engine",
+        "AWS Trainium & vLLM",
+        "Protocol v3.4"
+      ],
+      "status": "published",
+      "publishedAt": "2025-03-28T00:00:00.000Z",
+      "readTime": "14 min read",
+      "author": {
+        "name": "Vance R. Sterling",
+        "role": "Chief AI Architect",
+        "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuAXmSZ94v_M04GhLcnLoA_K4Ncag4bbtM-AFxUrPHFmxEzeznXNMwPZCOnR7MiZ-gj9FpwT9f8cXyG1ZcUxYS1OMPL0E8BEjDSCCG57gfglehilPrK03-LG6Rrxw0D-rq7jqlUErdSe0Si_MOK1ijyPukXVrBE8OZgX5ENOFPop5cMmJ07foicV7nMCwDzlOxkv1zNEpB0LOE7qLP1mSfpfps3JDzJB8Ps68iX2bbaPHSYUHvviN18"
+      },
+      "doi": "10.5921/syn.2025.0328",
+      "seoTitle": "Deploying Sub-50ms Speculative Decoding | Synthetix Research",
+      "seoDescription": "Architectural breakdown of draft-model calibration and KV-cache pinning on enterprise GPU clusters.",
+      "helpfulVotes": 142,
+      "order": 0,
+      "isActive": true,
+      "_id": "id_5rll4afd2mv6jj71v",
+      "createdAt": "2026-10-13T10:31:07.891Z",
+      "updatedAt": "2026-10-13T10:31:07.891Z"
+    },
+    {
+      "title": "Deterministic Tool Execution with Typed Micro-Contracts in Agent Swarms",
+      "slug": "deterministic-tool-execution-contracts",
+      "excerpt": "Resolving catastrophic hallucination cascading through asynchronous schema validation and typed zero-leak contracts.",
+      "content": "# Deterministic Tool Execution with Typed Micro-Contracts\n\nAutonomous agent swarms fail in enterprise deployments when tool arguments drift across unvalidated LLM turns. By placing strict Zod-style runtime constraints between agent reasoning tokens and API invocations, we guarantee zero runtime parsing exceptions.",
+      "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuC2GTCtLeeqEO6wocL821Oa8ogO1vtDetW0pbRzDwvApCzkBiRBojA4Ku5Og2GJ68RMhwE-rLX2CqdQoye0YWlvLVaI_gMZ3gIlh7BJI47GN_-8EicQwGrwvkfF83NlhN7qmrMI-YFEDfbh9GzmF1NjwVng44pPXAgefoZjHJ6N1Adx0UGLwydv3XughuZqp_rwDD2SZVeOT63zfUpZB586gGnRD7tgez6vLBWQIoAXoSgh0W9rAeY",
+      "tags": [
+        "Distributed Swarms",
+        "Agent Reliability",
+        "Type Safety"
+      ],
+      "status": "published",
+      "publishedAt": "2025-04-10T00:00:00.000Z",
+      "readTime": "9 min read",
+      "author": {
+        "name": "Vance R. Sterling",
+        "role": "Chief AI Architect",
+        "avatar": ""
+      },
+      "doi": "10.5921/syn.2025.0410",
+      "seoTitle": "Deterministic Tool Execution with Micro-Contracts",
+      "seoDescription": "Agent swarm reliability with typed micro-contracts.",
+      "helpfulVotes": 89,
+      "order": 1,
+      "isActive": true,
+      "_id": "id_u8gtwe67umv6jj71v",
+      "createdAt": "2026-10-13T10:31:07.891Z",
+      "updatedAt": "2026-10-13T10:31:07.891Z"
+    }
+  ],
+  "offerbanners": [
+    {
+      "text": "⚡ Q3 Project Slots Open — Book a 2-Week Sprint or Architecture Discovery Call →",
+      "buttonText": "Claim Audit →",
+      "buttonUrl": "#audit-booking",
+      "image": "",
+      "startsAt": null,
+      "endsAt": null,
+      "isActive": true,
+      "_id": "id_gya9djcxqmv6jj71y",
+      "createdAt": "2026-10-13T10:31:07.894Z",
+      "updatedAt": "2026-10-13T10:31:08.117Z"
+    }
+  ],
+  "sociallinks": [
+    {
+      "platform": "Twitter",
+      "label": "X (Twitter)",
+      "url": "https://twitter.com/synthetix_ai",
+      "icon": "alternate_email",
+      "order": 0,
+      "isActive": true,
+      "_id": "id_wkbwvvxs7mv6jj721",
+      "createdAt": "2026-10-13T10:31:07.897Z",
+      "updatedAt": "2026-10-13T10:31:07.897Z"
+    },
+    {
+      "platform": "GitHub",
+      "label": "GitHub",
+      "url": "https://github.com/synthetix-studio",
+      "icon": "terminal",
+      "order": 1,
+      "isActive": true,
+      "_id": "id_lrcx9g6vimv6jj721",
+      "createdAt": "2026-10-13T10:31:07.897Z",
+      "updatedAt": "2026-10-13T10:31:07.897Z"
+    },
+    {
+      "platform": "RSS",
+      "label": "Engineering RSS",
+      "url": "#",
+      "icon": "rss_feed",
+      "order": 2,
+      "isActive": true,
+      "_id": "id_f9fk4u8ukmv6jj721",
+      "createdAt": "2026-10-13T10:31:07.897Z",
+      "updatedAt": "2026-10-13T10:31:07.897Z"
+    }
+  ],
+  "contactmessages": [
+    {
+      "name": "Evelyn Shaw",
+      "email": "evelyn@apexcapital.example.com",
+      "projectType": "SaaS Web App",
+      "budget": "$150k - $250k",
+      "company": "Apex Capital",
+      "message": "Looking to benchmark your sub-millisecond LLM latency node across our high-frequency hedge fund research pipeline.",
+      "isRead": false,
+      "_id": "id_i7owc48wpmv6jj723",
+      "createdAt": "2026-10-13T10:31:07.899Z",
+      "updatedAt": "2026-10-13T10:31:07.899Z"
+    },
+    {
+      "name": "Kaelen Voss",
+      "email": "kaelen@hyperion.example.com",
+      "projectType": "Perf. Audit",
+      "budget": "$50k - $100k",
+      "company": "Hyperion Robotics",
+      "message": "Need full security and latency audit of our edge robotics telemetry cluster before series B closing.",
+      "isRead": false,
+      "_id": "id_o18qt0z5ymv6jj723",
+      "createdAt": "2026-10-13T10:31:07.899Z",
+      "updatedAt": "2026-10-13T10:31:07.899Z"
+    },
+    {
+      "name": "Sarah Takahashi",
+      "email": "sarah@sorahealth.example.com",
+      "projectType": "SaaS Web App",
+      "budget": "$60k+ Enterprise",
+      "company": "Sora Health",
+      "message": "Received proposal. Coordinating scheduling with our CTO for next Tuesday deep dive session.",
+      "isRead": true,
+      "_id": "id_ldmfbijlimv6jj723",
+      "createdAt": "2026-10-13T10:31:07.899Z",
+      "updatedAt": "2026-10-13T10:31:07.899Z"
+    }
+  ]
+}
