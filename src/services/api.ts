@@ -9,8 +9,12 @@ import {
 const API_BASE = '/api';
 
 // Helper for authorized headers
+export function getAdminToken(): string | null {
+  return localStorage.getItem('rusatech_admin_token') || localStorage.getItem('synthetix_admin_token');
+}
+
 function getAuthHeaders(): HeadersInit {
-  const token = localStorage.getItem('synthetix_admin_token');
+  const token = getAdminToken();
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
   };
@@ -100,8 +104,10 @@ export async function loginAdmin(
     throw new Error(json.message || 'Login failed');
   }
   if (json.data?.accessToken) {
-    localStorage.setItem('synthetix_admin_token', json.data.accessToken);
-    localStorage.setItem('synthetix_admin_user', JSON.stringify(json.data.user));
+    localStorage.setItem('rusatech_admin_token', json.data.accessToken);
+    localStorage.setItem('rusatech_admin_user', JSON.stringify(json.data.user));
+    localStorage.removeItem('synthetix_admin_token');
+    localStorage.removeItem('synthetix_admin_user');
   }
   return { user: json.data.user, token: json.data.accessToken };
 }
@@ -110,13 +116,15 @@ export async function logoutAdmin(): Promise<void> {
   try {
     await fetch(`${API_BASE}/auth/logout`, { method: 'POST' });
   } finally {
+    localStorage.removeItem('rusatech_admin_token');
+    localStorage.removeItem('rusatech_admin_user');
     localStorage.removeItem('synthetix_admin_token');
     localStorage.removeItem('synthetix_admin_user');
   }
 }
 
 export async function getAdminProfile(): Promise<AdminUser | null> {
-  const token = localStorage.getItem('synthetix_admin_token');
+  const token = getAdminToken();
   if (!token) return null;
   try {
     const res = await fetch(`${API_BASE}/auth/me`, {
@@ -148,11 +156,21 @@ export async function updateAdminResource<T = any>(
   id: string,
   data: any
 ): Promise<T> {
+  const cleanData = data && typeof data === 'object' ? { ...data } : data;
+  if (cleanData && typeof cleanData === 'object') {
+    delete cleanData._id;
+    delete cleanData.createdAt;
+    delete cleanData.updatedAt;
+  }
+
   const res = await fetch(`${API_BASE}/admin/${resource}/${id}`, {
     method: 'PUT',
     headers: getAuthHeaders(),
-    body: JSON.stringify(data),
+    body: JSON.stringify(cleanData),
   });
+  if (res.status === 401) {
+    throw new Error('Authentication expired. Please log in again.');
+  }
   const json = await res.json();
   if (!res.ok) throw new Error(json.message || `Failed to update ${resource}`);
   return json.data;
@@ -162,11 +180,21 @@ export async function createAdminResource<T = any>(
   resource: string,
   data: any
 ): Promise<T> {
+  const cleanData = data && typeof data === 'object' ? { ...data } : data;
+  if (cleanData && typeof cleanData === 'object') {
+    delete cleanData._id;
+    delete cleanData.createdAt;
+    delete cleanData.updatedAt;
+  }
+
   const res = await fetch(`${API_BASE}/admin/${resource}`, {
     method: 'POST',
     headers: getAuthHeaders(),
-    body: JSON.stringify(data),
+    body: JSON.stringify(cleanData),
   });
+  if (res.status === 401) {
+    throw new Error('Authentication expired. Please log in again.');
+  }
   const json = await res.json();
   if (!res.ok) throw new Error(json.message || `Failed to create ${resource}`);
   return json.data;

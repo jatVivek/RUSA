@@ -18,6 +18,7 @@ import { CaseStudyModal } from './components/public/CaseStudyModal';
 import { AdminLogin } from './components/admin/AdminLogin';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { Loader2 } from 'lucide-react';
+import { AmbientCursorGlow, AmbientOrbs } from './lib/animations';
 
 function PortfolioContent() {
   const { theme, setTheme, mode } = useTheme();
@@ -42,7 +43,7 @@ function PortfolioContent() {
 
       // Sync document metadata
       if (data.settings) {
-        document.title = data.settings.seoTitle || data.settings.siteTitle || 'Synthetix Studio';
+        document.title = data.settings.seoTitle || data.settings.siteTitle || 'RUSA TECH';
         const metaDesc = document.querySelector('meta[name="description"]');
         if (metaDesc) {
           metaDesc.setAttribute('content', data.settings.seoDescription || data.settings.tagline || '');
@@ -59,17 +60,37 @@ function PortfolioContent() {
   useEffect(() => {
     loadData();
 
-    // Check existing admin session
+    // Check existing admin session & route
     getAdminProfile().then((user) => {
       if (user) {
         setAdminUser(user);
+        if (window.location.hash === '#admin' || window.location.pathname.startsWith('/admin')) {
+          setIsAdminView(true);
+        }
+      } else {
+        if (window.location.hash === '#admin' || window.location.pathname.startsWith('/admin')) {
+          setShowLoginModal(true);
+        }
       }
     });
 
-    // Check URL hash for direct admin routing #admin
-    if (window.location.hash === '#admin') {
-      setShowLoginModal(true);
-    }
+    const handleRoute = () => {
+      if (window.location.hash === '#admin' || window.location.pathname.startsWith('/admin')) {
+        const token = localStorage.getItem('rusatech_admin_token') || localStorage.getItem('synthetix_admin_token');
+        if (token) {
+          setIsAdminView(true);
+        } else {
+          setShowLoginModal(true);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('popstate', handleRoute);
+    return () => {
+      window.removeEventListener('hashchange', handleRoute);
+      window.removeEventListener('popstate', handleRoute);
+    };
   }, []);
 
   if (loading && !siteData) {
@@ -79,7 +100,7 @@ function PortfolioContent() {
           <Loader2 className="w-6 h-6 animate-spin" />
         </div>
         <div className="font-mono text-xs text-[#869397] tracking-wider uppercase">
-          Synthetix Engine // Booting Telemetry
+          RUSA TECH Engine // Booting Telemetry
         </div>
       </div>
     );
@@ -109,7 +130,12 @@ function PortfolioContent() {
         user={adminUser}
         siteData={siteData}
         onRefresh={loadData}
-        onExitAdmin={() => setIsAdminView(false)}
+        onExitAdmin={() => {
+          setIsAdminView(false);
+          if (window.location.hash === '#admin') {
+            window.history.replaceState(null, '', window.location.pathname);
+          }
+        }}
       />
     );
   }
@@ -120,7 +146,11 @@ function PortfolioContent() {
     .sort((a, b) => a.order - b.order);
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] transition-colors duration-300 selection:bg-[var(--color-primary)] selection:text-black">
+    <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] transition-colors duration-300 selection:bg-[var(--color-primary)] selection:text-black relative">
+      {/* Ambient background effects */}
+      <AmbientOrbs />
+      <AmbientCursorGlow />
+
       {/* 1. Offer Announcement Banner (Strict visibility check) */}
       <AnnouncementBanner />
 

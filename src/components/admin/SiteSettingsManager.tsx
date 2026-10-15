@@ -15,6 +15,12 @@ export function SiteSettingsManager({ settings, onRefresh }: SiteSettingsManager
   const [savedSuccess, setSavedSuccess] = useState(false);
   const [error, setError] = useState('');
 
+  React.useEffect(() => {
+    if (settings) {
+      setFormData({ ...settings });
+    }
+  }, [settings]);
+
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);

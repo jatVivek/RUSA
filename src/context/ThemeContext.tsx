@@ -18,7 +18,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Read persisted mode
-    const saved = localStorage.getItem('synthetix_theme_mode') as 'dark' | 'light' | null;
+    const saved = (localStorage.getItem('rusatech_theme_mode') || localStorage.getItem('synthetix_theme_mode')) as 'dark' | 'light' | null;
     if (saved) {
       setModeState(saved);
       if (saved === 'dark') {
@@ -33,7 +33,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setMode = (newMode: 'dark' | 'light') => {
     setModeState(newMode);
-    localStorage.setItem('synthetix_theme_mode', newMode);
+    localStorage.setItem('rusatech_theme_mode', newMode);
     if (newMode === 'dark') {
       document.documentElement.classList.add('dark');
     } else {

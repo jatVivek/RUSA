@@ -106,11 +106,11 @@ export function AdminLayout({
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)] text-black font-bold flex items-center justify-center font-mono">
-              S
+              R
             </div>
             <div>
               <span className="font-heading font-bold text-white text-base">
-                Synthetix Studio
+                RUSA TECH
               </span>
               <span className="ml-2 text-[10px] font-mono text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-2 py-0.5 rounded border border-[var(--color-primary)]/20">
                 CMS KERNEL
@@ -204,7 +204,7 @@ export function AdminLayout({
             <div className="space-y-8 max-w-5xl">
               <div className="border-b border-[#3d494c]/30 pb-5">
                 <h2 className="font-heading text-2xl font-bold text-white">
-                  Synthetix Control Center // System Telemetry
+                  RUSA TECH Control Center // System Telemetry
                 </h2>
                 <p className="text-xs font-mono text-[#869397] mt-1">
                   Active database collections, live content stats, and system integrity status.

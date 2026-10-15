@@ -38,7 +38,7 @@ async function bootstrap() {
 
   // 3. Listen on port 3000
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Synthetix Studio Full-Stack app running at http://localhost:${PORT}`);
+    console.log(`🚀 RUSA TECH Full-Stack app running at http://localhost:${PORT}`);
   });
 }
 

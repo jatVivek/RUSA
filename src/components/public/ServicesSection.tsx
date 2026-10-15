@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ServiceItem } from '../../types';
 import {
   Code2,
@@ -10,6 +11,12 @@ import {
   ArrowRight,
   Terminal,
 } from 'lucide-react';
+import {
+  cubicEntrance,
+  defaultViewport,
+  fadeUpVariant,
+  staggerContainer,
+} from '../../lib/animations';
 
 interface ServicesSectionProps {
   services: ServiceItem[];
@@ -30,6 +37,8 @@ export function ServicesSection({
   services,
   onSelectService,
 }: ServicesSectionProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   if (!services || services.length === 0) return null;
 
   return (
@@ -38,29 +47,68 @@ export function ServicesSection({
       <div className="absolute inset-0 bg-[radial-gradient(#3d494c_1px,transparent_1px)] [background-size:24px_24px] opacity-15 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-12 relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-primary)]">
+        {/* Section Header */}
+        <motion.div
+          initial={shouldReduceMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={staggerContainer(0.12)}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div className="space-y-2">
+            <motion.span
+              variants={fadeUpVariant(0, 25, 0.7)}
+              style={{ willChange: 'transform' }}
+              className="font-mono text-xs uppercase tracking-widest text-[var(--color-primary)] block"
+            >
               // 02: CORE CAPABILITIES & DISCIPLINES
-            </span>
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#e5e1e4] mt-2">
+            </motion.span>
+            <motion.h2
+              variants={fadeUpVariant(0.08, 25, 0.7)}
+              style={{ willChange: 'transform' }}
+              className="font-heading text-3xl sm:text-4xl font-bold text-[#e5e1e4]"
+            >
               Engineering Disciplines We Deliver
-            </h2>
+            </motion.h2>
           </div>
-          <p className="text-[#869397] text-sm max-w-md">
+          <motion.p
+            variants={fadeUpVariant(0.16, 25, 0.7)}
+            style={{ willChange: 'transform' }}
+            className="text-[#869397] text-sm max-w-md"
+          >
             From greenfield architecture to high-stakes performance overhauls, our studio provides elite full-stack capabilities.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Services Cards with 0.1s stagger */}
+        <motion.div
+          initial={shouldReduceMotion ? false : 'hidden'}
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={staggerContainer(0.1, 0.1)}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {services.map((service, index) => {
             const icon = iconMap[service.icon] || <Zap className="w-6 h-6" />;
             const indexPadded = String(index + 1).padStart(2, '0');
 
             return (
-              <div
+              <motion.div
                 key={service._id}
-                className="bg-[#201f22]/90 backdrop-blur-md rounded-2xl p-7 border border-[#3d494c]/40 hover:border-[var(--color-primary)]/50 transition-all group flex flex-col justify-between hover:shadow-[0_0_30px_rgba(6,182,212,0.12)] relative"
+                variants={fadeUpVariant(0, 30, 0.7)}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : {
+                        y: -6,
+                        boxShadow:
+                          '0 0 35px rgba(6,182,212,0.22), 0 0 20px rgba(139,92,246,0.18)',
+                        borderColor: 'rgba(6,182,212,0.55)',
+                        transition: { duration: 0.3, ease: cubicEntrance },
+                      }
+                }
+                style={{ willChange: 'transform' }}
+                className="bg-[#201f22]/90 backdrop-blur-md rounded-2xl p-7 border border-[#3d494c]/40 transition-colors group flex flex-col justify-between relative"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
@@ -91,16 +139,16 @@ export function ServicesSection({
                   <a
                     href="#audit-booking"
                     onClick={() => onSelectService && onSelectService(service)}
-                    className="text-xs font-mono text-[var(--color-primary)] flex items-center gap-1.5 hover:gap-2.5 transition-all group-hover:brightness-125"
+                    className="text-xs font-mono text-[var(--color-primary)] flex items-center gap-1.5 transition-all group/link hover:brightness-125"
                   >
                     <span>Request Technical Scope</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/link:translate-x-1" />
                   </a>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

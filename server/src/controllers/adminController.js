@@ -1,6 +1,16 @@
 import { MODEL_REGISTRY, MANDATORY_SECTION_KEYS, PRESET_PALETTES } from '../models/index.js';
 import { successResponse, errorResponse } from '../utils/response.js';
 
+const SINGLETON_RESOURCES = [
+  'theme',
+  'themes',
+  'sitesettings',
+  'settings',
+  'sitesetting',
+  'hero',
+  'about',
+];
+
 function getModel(resource) {
   const key = (resource || '').toLowerCase().replace(/[-_]/g, '');
   return MODEL_REGISTRY[key] || null;
@@ -14,8 +24,9 @@ export async function listItems(req, res, next) {
       return errorResponse(res, `Unknown resource '${resource}'`, 404);
     }
 
+    const normalized = (resource || '').toLowerCase().replace(/[-_]/g, '');
     // Singletons
-    if (resource === 'theme' || resource === 'sitesettings') {
+    if (SINGLETON_RESOURCES.includes(normalized)) {
       const item = await Model.findOne();
       return successResponse(res, item || {}, `${resource} retrieved`);
     }
@@ -33,6 +44,12 @@ export async function getItemById(req, res, next) {
     const Model = getModel(resource);
     if (!Model) {
       return errorResponse(res, `Unknown resource '${resource}'`, 404);
+    }
+
+    const normalized = (resource || '').toLowerCase().replace(/[-_]/g, '');
+    if (SINGLETON_RESOURCES.includes(normalized) || id === 'singleton' || id === 'current') {
+      const item = await Model.findOne();
+      return successResponse(res, item || {}, `${resource} item retrieved`);
     }
 
     const item = await Model.findById(id);
@@ -53,19 +70,26 @@ export async function createItem(req, res, next) {
       return errorResponse(res, `Unknown resource '${resource}'`, 404);
     }
 
-    // For singletons (SiteSettings, Theme), update or upsert
-    if (resource === 'theme' || resource === 'sitesettings') {
-      const updated = await Model.findOneAndUpdate({}, { $set: req.body }, { upsert: true, new: true });
+    const payload = { ...req.body };
+    delete payload._id;
+    delete payload.id;
+    delete payload.createdAt;
+    delete payload.updatedAt;
+
+    const normalized = (resource || '').toLowerCase().replace(/[-_]/g, '');
+    // For singletons (SiteSettings, Theme, Hero, About), update or upsert
+    if (SINGLETON_RESOURCES.includes(normalized)) {
+      const updated = await Model.findOneAndUpdate({}, { $set: payload }, { upsert: true, new: true });
       return successResponse(res, updated, `${resource} updated successfully`);
     }
 
     // Auto-order calculation
-    if (req.body.order === undefined) {
+    if (payload.order === undefined) {
       const count = await Model.countDocuments();
-      req.body.order = count;
+      payload.order = count;
     }
 
-    const item = await Model.create(req.body);
+    const item = await Model.create(payload);
     return successResponse(res, item, `${resource} created successfully`, 201);
   } catch (err) {
     next(err);
@@ -80,13 +104,20 @@ export async function updateItem(req, res, next) {
       return errorResponse(res, `Unknown resource '${resource}'`, 404);
     }
 
-    // Singletons
-    if (resource === 'theme' || resource === 'sitesettings') {
-      const updated = await Model.findOneAndUpdate({}, { $set: req.body }, { upsert: true, new: true });
+    const payload = { ...req.body };
+    delete payload._id;
+    delete payload.id;
+    delete payload.createdAt;
+    delete payload.updatedAt;
+
+    const normalized = (resource || '').toLowerCase().replace(/[-_]/g, '');
+    // Singletons or singleton ID
+    if (SINGLETON_RESOURCES.includes(normalized) || id === 'singleton' || id === 'current') {
+      const updated = await Model.findOneAndUpdate({}, { $set: payload }, { upsert: true, new: true });
       return successResponse(res, updated, `${resource} updated`);
     }
 
-    const updated = await Model.findByIdAndUpdate(id, { $set: req.body }, { new: true });
+    const updated = await Model.findByIdAndUpdate(id, { $set: payload }, { new: true });
     if (!updated) {
       return errorResponse(res, `${resource} item not found`, 404);
     }
@@ -111,6 +142,14 @@ export async function deleteItem(req, res, next) {
       if (section && (section.isMandatory || MANDATORY_SECTION_KEYS.includes(section.key))) {
         return errorResponse(res, `Mandatory section '${section.title}' cannot be deleted. You can toggle its visibility instead.`, 403);
       }
+    }
+
+    if (id === 'singleton' || id === 'current') {
+      const item = await Model.findOne();
+      if (item) {
+        await Model.findByIdAndDelete(item._id);
+      }
+      return successResponse(res, null, `${resource} deleted successfully`);
     }
 
     const deleted = await Model.findByIdAndDelete(id);

@@ -70,3 +70,42 @@ code, kbd, pre, .font-mono {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shimmer {
+  background-size: 200% auto;
+  animation: gradient-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-shimmer,
+  .animate-scanline,
+  .animate-pulse,
+  .animate-ping {
+    animation: none !important;
+  }
+}

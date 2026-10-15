@@ -10,7 +10,7 @@ const heroSchema = new mongoose.Schema(
     subheadline: {
       type: String,
       default:
-        'Synthetix is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences for venture-backed startups and modern enterprises.',
+        'RUSA TECH is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences for venture-backed startups and modern enterprises.',
     },
     primaryCtaText: { type: String, default: 'Schedule Scoping Call' },
     primaryCtaUrl: { type: String, default: '#audit-booking' },

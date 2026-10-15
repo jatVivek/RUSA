@@ -12,13 +12,13 @@ interface AboutEditorProps {
 
 export function AboutEditor({ about, onRefresh }: AboutEditorProps) {
   const [formData, setFormData] = useState<AboutContent>({
-    title: about?.title || 'About Synthetix Studio',
+    title: about?.title || 'About RUSA TECH',
     headline:
       about?.headline ||
       'Obsessive attention to web speed, elegant ergonomics, and enterprise-grade durability.',
     bio:
       about?.bio ||
-      `Synthetix Studio was founded on a singular premise: modern web applications should not only look visually striking, they must execute with ruthless precision, sub-100ms response times, and resilient fault-tolerance.\n\nWe collaborate directly with founders, CTOs, and product directors to design and deploy complex web software—translating ambition into market-dominating production reality.`,
+      `RUSA TECH was founded on a singular premise: modern web applications should not only look visually striking, they must execute with ruthless precision, sub-100ms response times, and resilient fault-tolerance.\n\nWe collaborate directly with founders, CTOs, and product directors to design and deploy complex web software—translating ambition into market-dominating production reality.`,
     avatar:
       about?.avatar ||
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDRB5o4N_T0B9Z-81nS1_e0T7l9xHqYj8BfD0sW21aX-9xJ7Y7Kz0P4sZt2vD7z8lQ=s400',
@@ -33,6 +33,19 @@ export function AboutEditor({ about, onRefresh }: AboutEditorProps) {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  React.useEffect(() => {
+    if (about) {
+      setFormData({
+        title: about.title || '',
+        headline: about.headline || '',
+        bio: about.bio || '',
+        avatar: about.avatar || '',
+        stats: about.stats || [],
+        isActive: about.isActive !== false,
+      });
+    }
+  }, [about]);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();

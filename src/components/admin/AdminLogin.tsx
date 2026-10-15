@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { loginAdmin } from '../../services/api';
 import { AdminUser } from '../../types';
-import { Lock, Mail, ArrowRight, ShieldCheck, Sparkles, X } from 'lucide-react';
+import { Lock, Mail, ArrowRight, X } from 'lucide-react';
 
 interface AdminLoginProps {
   onSuccess: (user: AdminUser) => void;
@@ -9,8 +9,8 @@ interface AdminLoginProps {
 }
 
 export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
-  const [email, setEmail] = useState('admin@synthetix.studio');
-  const [password, setPassword] = useState('admin123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -27,12 +27,6 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleFillDemo = () => {
-    setEmail('admin@synthetix.studio');
-    setPassword('admin123456');
-    setError('');
   };
 
   return (
@@ -57,7 +51,7 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
             <Lock className="w-6 h-6" />
           </div>
           <h2 className="font-heading text-2xl font-bold text-white">
-            Synthetix CMS Command Center
+            RUSA TECH CMS Command Center
           </h2>
           <p className="text-xs font-mono text-[#869397]">
             Authenticated Admin Access // Full System Control
@@ -82,7 +76,7 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@synthetix.studio"
+                placeholder="admin@rusatech.com"
                 className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/40 text-sm text-white placeholder-[#869397] focus:outline-none focus:border-[var(--color-primary)] font-mono transition-colors"
               />
             </div>
@@ -114,21 +108,6 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
-
-        {/* Demo Quick Access */}
-        <div className="mt-6 pt-5 border-t border-[#3d494c]/30 text-center">
-          <button
-            type="button"
-            onClick={handleFillDemo}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2a2a2c] hover:bg-[#353437] text-xs font-mono text-[var(--color-primary)] border border-[var(--color-primary)]/20 cursor-pointer transition-colors"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Load Default Seed Credentials</span>
-          </button>
-          <p className="text-[11px] text-[#869397] font-mono mt-2">
-            admin@synthetix.studio / admin123456
-          </p>
-        </div>
       </div>
     </div>
   );

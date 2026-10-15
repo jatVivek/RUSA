@@ -1,4 +1,4 @@
-# Synthetix Studio Portfolio API Server
+# RUSA TECH Portfolio API Server
 
 High-performance, dynamic portfolio backend and CMS engine built with Node.js, Express, MongoDB with Mongoose, JWT (httpOnly cookie authentication), Zod validation, and an embedded persistence fallback.
 

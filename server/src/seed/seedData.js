@@ -1,16 +1,16 @@
 import { PRESET_PALETTES } from '../models/Theme.js';
 
 export const initialSiteSettings = {
-  siteTitle: 'Synthetix.studio',
+  siteTitle: 'RUSA TECH',
   tagline: 'Modern Web Agency & High-Performance Engineering Studio',
   logoLight: 'https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ',
   logoDark: 'https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ',
   favicon: 'https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ',
-  seoTitle: 'Synthetix Studio | High-Performance Web Engineering & UI/UX',
+  seoTitle: 'RUSA TECH | High-Performance Web Engineering & UI/UX',
   seoDescription: 'Premier full-stack web engineering and UI/UX studio building modern SaaS platforms, headless e-commerce, and high-performance digital products for venture-backed startups and enterprises.',
   ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU',
-  footerText: '© 2025 Synthetix Studio Inc. High-Performance Web Agency.',
-  contactEmail: 'founder@synthetix.studio',
+  footerText: '© 2025 RUSA TECH Inc. High-Performance Web Agency.',
+  contactEmail: 'contact@rusatech.com',
   phone: '+1 (415) 890-4280',
   address: 'San Francisco, CA • Orbital Operations Center',
 };
@@ -47,7 +47,7 @@ export const initialHero = {
   headline: 'We Build High-Performance Web Applications That Scale Your Business',
   highlightText: 'High-Performance Web Applications',
   subheadline:
-    'Synthetix is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences for venture-backed startups and modern enterprises.',
+    'RUSA TECH is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences for venture-backed startups and modern enterprises.',
   primaryCtaText: 'Schedule Scoping Call',
   primaryCtaUrl: '#audit-booking',
   secondaryCtaText: 'Explore Client Work',
@@ -68,7 +68,7 @@ export const initialHero = {
 };
 
 export const initialAbout = {
-  title: 'About Synthetix Studio',
+  title: 'About RUSA TECH',
   headline: 'Engineered for Velocity, Scale, and Polish',
   bio: 'We are an elite software collective deploying production-grade web systems, resilient cloud infrastructure, and pixel-perfect design systems. We operate with radical transparency, continuous deployment, and fixed-price guarantees.',
   avatar:
@@ -249,7 +249,7 @@ export const initialSkills = [
 
 export const initialTestimonials = [
   {
-    quote: '“Synthetix shipped our entire multi-tenant SaaS platform two weeks ahead of schedule. Their code quality and design craft are unmatched.”',
+    quote: '“RUSA TECH shipped our entire multi-tenant SaaS platform two weeks ahead of schedule. Their code quality and design craft are unmatched.”',
     authorName: 'Marcus Chen',
     authorRole: 'VP of Engineering',
     company: 'Prism Analytics',
@@ -260,7 +260,7 @@ export const initialTestimonials = [
     isActive: true,
   },
   {
-    quote: '“Our conversion rate jumped 38% immediately after launching the headless storefront Synthetix engineered for us. The site is unbelievably fast.”',
+    quote: '“Our conversion rate jumped 38% immediately after launching the headless storefront RUSA TECH engineered for us. The site is unbelievably fast.”',
     authorName: 'Elena Rostova',
     authorRole: 'Founder & CEO',
     company: 'Aura Commerce',
@@ -271,7 +271,7 @@ export const initialTestimonials = [
     isActive: true,
   },
   {
-    quote: '“Working with Synthetix felt like having an elite Silicon Valley engineering team embedded directly into our startup. Zero fluff, just flawless web software.”',
+    quote: '“Working with RUSA TECH felt like having an elite Silicon Valley engineering team embedded directly into our startup. Zero fluff, just flawless web software.”',
     authorName: 'Julian Vance, Ph.D.',
     authorRole: 'CTO & Co-Founder',
     company: 'Generative AI Creative Suite',
@@ -286,7 +286,7 @@ export const initialTestimonials = [
 
 export const initialExperiences = [
   {
-    company: 'Synthetix Studio Core Delivery',
+    company: 'RUSA TECH Core Delivery',
     role: 'Phase 01: Discovery & Blueprint',
     period: 'Week 1',
     description: 'We audit your product requirements, create technical architecture diagrams, define exact sprint milestones, and supply a fixed-cost timeline.',
@@ -295,7 +295,7 @@ export const initialExperiences = [
     isActive: true,
   },
   {
-    company: 'Synthetix Studio Core Delivery',
+    company: 'RUSA TECH Core Delivery',
     role: 'Phase 02: Prototyping & Design',
     period: 'Week 2–3',
     description: 'High-fidelity Figma prototypes, clickable user flows, component token architecture, and stakeholder design reviews before writing a single line of code.',
@@ -304,7 +304,7 @@ export const initialExperiences = [
     isActive: true,
   },
   {
-    company: 'Synthetix Studio Core Delivery',
+    company: 'RUSA TECH Core Delivery',
     role: 'Phase 03: Production Engineering',
     period: 'Week 4–7',
     description: 'Bi-weekly sprint demos on live staging links. Automated unit and end-to-end testing, peer code reviews, and stringent security audits.',
@@ -313,7 +313,7 @@ export const initialExperiences = [
     isActive: true,
   },
   {
-    company: 'Synthetix Studio Core Delivery',
+    company: 'RUSA TECH Core Delivery',
     role: 'Phase 04: Launch & Evolution',
     period: 'Week 8+',
     description: 'Zero-downtime production deployment, Core Web Vitals telemetry tracking, full IP and code handover, plus ongoing post-launch maintenance sprints.',
@@ -350,7 +350,7 @@ Speculative speedup is fundamentally determined by the ratio of Target Forward C
         'https://lh3.googleusercontent.com/aida-public/AB6AXuAXmSZ94v_M04GhLcnLoA_K4Ncag4bbtM-AFxUrPHFmxEzeznXNMwPZCOnR7MiZ-gj9FpwT9f8cXyG1ZcUxYS1OMPL0E8BEjDSCCG57gfglehilPrK03-LG6Rrxw0D-rq7jqlUErdSe0Si_MOK1ijyPukXVrBE8OZgX5ENOFPop5cMmJ07foicV7nMCwDzlOxkv1zNEpB0LOE7qLP1mSfpfps3JDzJB8Ps68iX2bbaPHSYUHvviN18',
     },
     doi: '10.5921/syn.2025.0328',
-    seoTitle: 'Deploying Sub-50ms Speculative Decoding | Synthetix Research',
+    seoTitle: 'Deploying Sub-50ms Speculative Decoding | RUSA TECH Research',
     seoDescription: 'Architectural breakdown of draft-model calibration and KV-cache pinning on enterprise GPU clusters.',
     helpfulVotes: 142,
     order: 0,
@@ -394,8 +394,8 @@ export const initialOfferBanner = {
 };
 
 export const initialSocialLinks = [
-  { platform: 'Twitter', label: 'X (Twitter)', url: 'https://twitter.com/synthetix_ai', icon: 'alternate_email', order: 0, isActive: true },
-  { platform: 'GitHub', label: 'GitHub', url: 'https://github.com/synthetix-studio', icon: 'terminal', order: 1, isActive: true },
+  { platform: 'Twitter', label: 'X (Twitter)', url: 'https://twitter.com/rusatech_ai', icon: 'alternate_email', order: 0, isActive: true },
+  { platform: 'GitHub', label: 'GitHub', url: 'https://github.com/rusatech-studio', icon: 'terminal', order: 1, isActive: true },
   { platform: 'RSS', label: 'Engineering RSS', url: '#', icon: 'rss_feed', order: 2, isActive: true },
 ];
 

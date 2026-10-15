@@ -234,7 +234,7 @@ export function TestimonialsManager({
                   onChange={(e) =>
                     setEditingItem({ ...editingItem, quote: e.target.value })
                   }
-                  placeholder="Synthetix refactored our core ingestion engine in 4 weeks..."
+                  placeholder="RUSA TECH refactored our core ingestion engine in 4 weeks..."
                   className="w-full px-3.5 py-2.5 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/40 text-sm text-white focus:outline-none focus:border-[var(--color-primary)]"
                 />
               </div>

@@ -28,7 +28,7 @@ export function ImageUploader({
     formData.append('image', file);
 
     try {
-      const token = localStorage.getItem('synthetix_admin_token');
+      const token = localStorage.getItem('rusatech_admin_token') || localStorage.getItem('synthetix_admin_token');
       const res = await fetch('/api/admin/upload', {
         method: 'POST',
         headers: {

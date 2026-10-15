@@ -57,6 +57,22 @@ export async function runSeed(force = false) {
     console.log(` Admin already exists: ${ENV.DEFAULT_ADMIN_EMAIL}`);
   }
 
+  // Also ensure admin@synthetix.studio exists with admin123456
+  const studioAdmin = await Admin.findOne({ email: 'admin@synthetix.studio' });
+  if (!studioAdmin || force) {
+    if (studioAdmin && force) {
+      await Admin.deleteOne({ email: 'admin@synthetix.studio' });
+    }
+    const studioPasswordHash = await hashPassword('admin123456');
+    await Admin.create({
+      name: 'RUSA TECH Studio Admin',
+      email: 'admin@synthetix.studio',
+      passwordHash: studioPasswordHash,
+      role: 'superadmin',
+    });
+    console.log(' Created studio admin: admin@synthetix.studio');
+  }
+
   // 2. SiteSettings
   const existingSettings = await SiteSettings.findOne();
   if (!existingSettings || force) {

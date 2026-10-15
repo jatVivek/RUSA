@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ProductItem } from '../../types';
+import { cubicEntrance } from '../../lib/animations';
 import {
   X,
   Zap,
@@ -26,10 +28,17 @@ interface CaseStudyModalProps {
 export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
   const [activeTab, setActiveTab] = useState<'prompt' | 'latent' | 'lora'>('prompt');
   const [demoRunning, setDemoRunning] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-3 sm:p-6 lg:p-10 animate-fade-in">
-      <div className="relative w-full max-w-6xl bg-[#131315] border border-[#3d494c]/50 rounded-2xl shadow-2xl overflow-hidden my-auto text-[#e5e1e4]">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-3 sm:p-6 lg:p-10">
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.35, ease: cubicEntrance }}
+        className="relative w-full max-w-6xl bg-[#131315] border border-[#3d494c]/50 rounded-2xl shadow-2xl overflow-hidden my-auto text-[#e5e1e4]"
+      >
         {/* Top Dismiss Button */}
         <button
           onClick={onClose}
@@ -76,7 +85,7 @@ export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
             </h1>
 
             <p className="text-[#bcc9cd] text-base lg:text-lg max-w-4xl leading-relaxed">
-              Architected a zero-cold-start generative canvas for an enterprise creative suite. By fusing custom low-level TensorRT-LLM kernels, predictive denoising skip-steps, and client-side WebGPU acceleration, Synthetix Studio collapsed interactive latency by 77%.
+              Architected a zero-cold-start generative canvas for an enterprise creative suite. By fusing custom low-level TensorRT-LLM kernels, predictive denoising skip-steps, and client-side WebGPU acceleration, RUSA TECH collapsed interactive latency by 77%.
             </p>
           </div>
 
@@ -399,7 +408,7 @@ export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
             <div className="lg:col-span-8 space-y-4">
               <Quote className="w-8 h-8 text-[var(--color-primary)]" />
               <p className="text-sm sm:text-base text-[#e5e1e4] italic leading-relaxed">
-                "Before Synthetix intervened, real-time spatial drawing with diffusion models was treated as an impossible research problem within our engineering roadmap. Their team delivered bespoke CUDA kernels and a client WebGPU architecture in eight weeks that made sub-100ms generative creation a reality for our 10 million users."
+                "Before RUSA TECH intervened, real-time spatial drawing with diffusion models was treated as an impossible research problem within our engineering roadmap. Their team delivered bespoke CUDA kernels and a client WebGPU architecture in eight weeks that made sub-100ms generative creation a reality for our 10 million users."
               </p>
               <div className="flex items-center gap-3">
                 <img
@@ -433,7 +442,7 @@ export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

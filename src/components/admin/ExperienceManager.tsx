@@ -182,7 +182,7 @@ export function ExperienceManager({ experience, onRefresh }: ExperienceManagerPr
                     onChange={(e) =>
                       setEditingItem({ ...editingItem, company: e.target.value })
                     }
-                    placeholder="Synthetix Studio"
+                    placeholder="RUSA TECH"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/40 text-sm text-white focus:outline-none focus:border-[var(--color-primary)]"
                   />
                 </div>

@@ -31,7 +31,7 @@ export function ChangePasswordModal({ isOpen, onClose }: ChangePasswordModalProp
     setError('');
 
     try {
-      const token = localStorage.getItem('synthetix_admin_token');
+      const token = localStorage.getItem('rusatech_admin_token') || localStorage.getItem('synthetix_admin_token');
       const res = await fetch('/api/auth/change-password', {
         method: 'POST',
         headers: {

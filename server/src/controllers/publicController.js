@@ -151,7 +151,12 @@ export async function submitContact(req, res, next) {
     // Notify administrator
     await sendContactNotification({ name, email, message, projectType, budget });
 
-    return successResponse(res, contactEntry, 'Project brief received! Our lead architect will be in touch within 24 hours.', 201);
+    return successResponse(
+      res,
+      { received: true },
+      'Project brief received! Our lead architect will be in touch within 24 hours.',
+      201
+    );
   } catch (err) {
     next(err);
   }

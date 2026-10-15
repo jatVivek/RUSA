@@ -8,7 +8,21 @@ const adminSchema = new mongoose.Schema(
     passwordHash: { type: String, required: true },
     role: { type: String, enum: ['admin', 'superadmin'], default: 'admin' },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: {
+      transform: (doc, ret) => {
+        delete ret.passwordHash;
+        return ret;
+      },
+    },
+    toObject: {
+      transform: (doc, ret) => {
+        delete ret.passwordHash;
+        return ret;
+      },
+    },
+  }
 );
 
 const MongooseAdmin = mongoose.models.Admin || mongoose.model('Admin', adminSchema);

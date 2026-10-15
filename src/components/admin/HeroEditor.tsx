@@ -18,7 +18,7 @@ export function HeroEditor({ hero, onRefresh }: HeroEditorProps) {
     highlightText: hero?.highlightText || 'High-Performance Web Applications',
     subheadline:
       hero?.subheadline ||
-      'Synthetix is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences.',
+      'RUSA TECH is a premier full-stack web engineering and UI/UX studio. We design, architect, and ship production-grade SaaS platforms, bespoke e-commerce engines, and high-conversion digital experiences.',
     primaryCtaText: hero?.primaryCtaText || 'Schedule Scoping Call',
     primaryCtaUrl: hero?.primaryCtaUrl || '#audit-booking',
     secondaryCtaText: hero?.secondaryCtaText || 'Explore Shipped Work',
@@ -40,6 +40,28 @@ export function HeroEditor({ hero, onRefresh }: HeroEditorProps) {
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  React.useEffect(() => {
+    if (hero) {
+      setFormData({
+        badge: hero.badge || '',
+        badgeStatus: hero.badgeStatus || '',
+        headline: hero.headline || '',
+        highlightText: hero.highlightText || '',
+        subheadline: hero.subheadline || '',
+        primaryCtaText: hero.primaryCtaText || '',
+        primaryCtaUrl: hero.primaryCtaUrl || '',
+        secondaryCtaText: hero.secondaryCtaText || '',
+        secondaryCtaUrl: hero.secondaryCtaUrl || '',
+        metrics: hero.metrics || [],
+        previewAppTitle: hero.previewAppTitle || '',
+        previewAppSubtitle: hero.previewAppSubtitle || '',
+        previewAppUrl: hero.previewAppUrl || '',
+        previewAppImage: hero.previewAppImage || '',
+        isActive: hero.isActive !== false,
+      });
+    }
+  }, [hero]);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();

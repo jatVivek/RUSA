@@ -210,6 +210,9 @@ export function createModel(name, schema, mongooseModel) {
 
       const actualUpdate = update.$set ? { ...update.$set } : { ...update };
       delete actualUpdate.$set;
+      delete actualUpdate._id;
+      delete actualUpdate.id;
+      delete actualUpdate.createdAt;
 
       if (index === -1) {
         if (options.upsert) {

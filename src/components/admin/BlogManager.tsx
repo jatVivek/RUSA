@@ -118,7 +118,7 @@ export function BlogManager({ blogs, onRefresh }: BlogManagerProps) {
               tags: ['Distributed Systems', 'Performance', 'Architecture'],
               status: 'published',
               readTime: '6 min read',
-              doi: '10.1145/synthetix.2024.12',
+              doi: '10.1145/rusatech.2024.12',
               isActive: true,
             })
           }
@@ -269,7 +269,7 @@ export function BlogManager({ blogs, onRefresh }: BlogManagerProps) {
                     type="text"
                     value={editingItem.doi || ''}
                     onChange={(e) => setEditingItem({ ...editingItem, doi: e.target.value })}
-                    placeholder="10.1145/synthetix.2024.08"
+                    placeholder="10.1145/rusatech.2024.08"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/40 text-sm text-white focus:outline-none focus:border-[var(--color-primary)] font-mono text-xs"
                   />
                 </div>

@@ -215,7 +215,7 @@ export function MessagesInbox() {
               {/* Action buttons */}
               <div className="pt-2 flex items-center gap-3">
                 <a
-                  href={`mailto:${selectedMessage.email}?subject=Re: Synthetix Scoping - ${selectedMessage.projectType}`}
+                  href={`mailto:${selectedMessage.email}?subject=Re: RUSA TECH Scoping - ${selectedMessage.projectType}`}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--color-primary)] text-black font-semibold text-xs font-mono hover:brightness-110 cursor-pointer"
                 >
                   <Mail className="w-4 h-4" />

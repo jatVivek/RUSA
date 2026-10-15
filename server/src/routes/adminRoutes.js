@@ -12,14 +12,15 @@ import {
 } from '../controllers/adminController.js';
 import { requireAuth } from '../middleware/auth.js';
 import { upload } from '../middleware/upload.js';
+import { uploadLimiter } from '../middleware/rateLimiter.js';
 
 const router = Router();
 
 // Protect ALL admin routes with requireAuth
 router.use(requireAuth);
 
-// File upload
-router.post('/upload', upload.single('image'), uploadImage);
+// File upload with rate limiting
+router.post('/upload', uploadLimiter, upload.single('image'), uploadImage);
 
 // Theme reset
 router.post('/theme/reset', resetTheme);
