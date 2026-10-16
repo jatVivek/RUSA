@@ -14,9 +14,14 @@ if (!fs.existsSync(UPLOAD_DIR)) {
 
 const MIME_MAP = {
   'image/jpeg': '.jpg',
+  'image/jpg': '.jpg',
   'image/png': '.png',
   'image/webp': '.webp',
   'image/gif': '.gif',
+  'image/svg+xml': '.svg',
+  'image/x-icon': '.ico',
+  'image/vnd.microsoft.icon': '.ico',
+  'image/avif': '.avif',
 };
 
 const storage = multer.diskStorage({
@@ -24,17 +29,26 @@ const storage = multer.diskStorage({
     cb(null, UPLOAD_DIR);
   },
   filename: function (req, file, cb) {
-    const safeExt = MIME_MAP[file.mimetype] || '.jpg';
+    let safeExt = MIME_MAP[file.mimetype];
+    if (!safeExt && file.originalname) {
+      const ext = path.extname(file.originalname).toLowerCase();
+      if (['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.ico', '.avif'].includes(ext)) {
+        safeExt = ext;
+      }
+    }
+    safeExt = safeExt || '.png';
     const randomHex = crypto.randomBytes(16).toString('hex');
     cb(null, `img_${Date.now()}_${randomHex}${safeExt}`);
   },
 });
 
 const fileFilter = (req, file, cb) => {
-  if (MIME_MAP[file.mimetype]) {
+  const ext = file.originalname ? path.extname(file.originalname).toLowerCase() : '';
+  const isAllowedExt = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.ico', '.avif'].includes(ext);
+  if (MIME_MAP[file.mimetype] || isAllowedExt) {
     cb(null, true);
   } else {
-    const err = new Error('Invalid image file format. Allowed formats: JPEG, PNG, WEBP, GIF.');
+    const err = new Error('Invalid image file format. Allowed formats: SVG, PNG, WEBP, JPEG, GIF, ICO, AVIF.');
     err.statusCode = 400;
     cb(err, false);
   }
@@ -43,7 +57,7 @@ const fileFilter = (req, file, cb) => {
 export const upload = multer({
   storage,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit
+    fileSize: 10 * 1024 * 1024, // 10MB limit
     files: 1,
   },
   fileFilter,

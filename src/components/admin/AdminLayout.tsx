@@ -76,6 +76,18 @@ export function AdminLayout({
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
   const { mode, toggleMode } = useTheme();
 
+  const [adminLogoErr, setAdminLogoErr] = useState(false);
+  const rawAdminLogo =
+    mode === 'dark'
+      ? siteData.settings?.logoDark || siteData.settings?.logoLight
+      : siteData.settings?.logoLight || siteData.settings?.logoDark;
+
+  React.useEffect(() => {
+    setAdminLogoErr(false);
+  }, [rawAdminLogo, mode]);
+
+  const adminLogo = (!adminLogoErr && rawAdminLogo) || (mode === 'dark' ? '/logo-dark.svg' : '/logo-light.svg');
+
   const handleLogout = async () => {
     await logoutAdmin();
     onExitAdmin();
@@ -105,12 +117,15 @@ export function AdminLayout({
       <header className="h-16 border-b border-[#3d494c]/40 bg-[#1b1b1d]/90 backdrop-blur-md sticky top-0 z-40 px-5 lg:px-8 flex items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)] text-black font-bold flex items-center justify-center font-mono">
-              R
-            </div>
+            <img
+              src={adminLogo}
+              alt={siteData.settings?.siteTitle || 'RUSA TECH'}
+              onError={() => setAdminLogoErr(true)}
+              className="h-8 w-auto max-w-[100px] object-contain shrink-0"
+            />
             <div>
               <span className="font-heading font-bold text-white text-base">
-                RUSA TECH
+                {siteData.settings?.siteTitle || 'RUSA TECH'}
               </span>
               <span className="ml-2 text-[10px] font-mono text-[var(--color-primary)] bg-[var(--color-primary)]/10 px-2 py-0.5 rounded border border-[var(--color-primary)]/20">
                 CMS KERNEL

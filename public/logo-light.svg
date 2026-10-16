@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="rusa-light-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891b2" />
+      <stop offset="50%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="rusa-light-accent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#0891b2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Hexagonal Frame -->
+  <path
+    d="M60 6 L108 33.5 V86.5 L60 114 L12 86.5 V33.5 Z"
+    stroke="url(#rusa-light-primary)"
+    stroke-width="3.5"
+    stroke-linejoin="round"
+    fill="#ffffff"
+    fill-opacity="0.95"
+  />
+
+  <!-- Subtle Inner Accent -->
+  <path
+    d="M60 17 L97 38.5 V81.5 L60 103 L23 81.5 V38.5 Z"
+    stroke="url(#rusa-light-primary)"
+    stroke-width="1"
+    stroke-opacity="0.25"
+    fill="none"
+  />
+
+  <!-- Stylized Geometric "R" Monogram -->
+  <path
+    d="M40 32 V88"
+    stroke="url(#rusa-light-primary)"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+  <path
+    d="M40 36 H64 C76 36 82 44 82 52 C82 60 75 66 64 66 H40"
+    stroke="url(#rusa-light-primary)"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <path
+    d="M58 64 L79 88"
+    stroke="url(#rusa-light-accent)"
+    stroke-width="7"
+    stroke-linecap="round"
+  />
+
+  <!-- Core Pulse Nodes -->
+  <circle cx="60" cy="51" r="3.5" fill="#0891b2" />
+  <circle cx="108" cy="33.5" r="2.5" fill="#0891b2" />
+  <circle cx="60" cy="114" r="2.5" fill="#7c3aed" />
+  <circle cx="12" cy="33.5" r="2.5" fill="#2563eb" />
+</svg>

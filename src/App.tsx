@@ -48,6 +48,15 @@ function PortfolioContent() {
         if (metaDesc) {
           metaDesc.setAttribute('content', data.settings.seoDescription || data.settings.tagline || '');
         }
+
+        const faviconUrl = data.settings.favicon || data.settings.logoDark || '/favicon.svg';
+        let faviconLink = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+        if (!faviconLink) {
+          faviconLink = document.createElement('link');
+          faviconLink.rel = 'icon';
+          document.head.appendChild(faviconLink);
+        }
+        faviconLink.href = faviconUrl;
       }
     } catch (err: any) {
       console.error(err);

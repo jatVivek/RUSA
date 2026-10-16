@@ -107,25 +107,143 @@ export function SiteSettingsManager({ settings, onRefresh }: SiteSettingsManager
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-            <ImageUploader
-              label="Logo Light Mode"
-              value={formData.logoLight}
-              onChange={(url) => setFormData({ ...formData, logoLight: url })}
-            />
-            <ImageUploader
-              label="Logo Dark Mode"
-              value={formData.logoDark}
-              onChange={(url) => setFormData({ ...formData, logoDark: url })}
-            />
-          </div>
+          {/* Logo Management */}
+          <div className="space-y-4 pt-2 border-t border-[#3d494c]/30">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span className="text-xs font-mono uppercase text-[#bcc9cd] font-semibold">
+                Brand Emblem & Vector Logos
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const primary = formData.logoDark || formData.logoLight || '/logo-dark.svg';
+                    setFormData({
+                      ...formData,
+                      logoDark: primary,
+                      logoLight: primary,
+                      favicon: formData.favicon || primary,
+                    });
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-[#2a2a2c] hover:bg-[#353437] text-[11px] font-mono text-[var(--color-primary)] border border-[var(--color-primary)]/30 transition-colors cursor-pointer"
+                  title="Make dark and light modes use the same primary logo"
+                >
+                  Sync to Both Modes
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setFormData({
+                      ...formData,
+                      logoDark: '/logo-dark.svg',
+                      logoLight: '/logo-light.svg',
+                      favicon: '/favicon.svg',
+                    });
+                  }}
+                  className="px-2.5 py-1 rounded-lg bg-[#2a2a2c] hover:bg-[#353437] text-[11px] font-mono text-[#869397] hover:text-white border border-[#3d494c]/40 transition-colors cursor-pointer"
+                  title="Reset to default high-resolution RUSA TECH vector emblems"
+                >
+                  Reset Default Vectors
+                </button>
+              </div>
+            </div>
 
-          <div className="pt-2">
-            <ImageUploader
-              label="Favicon URL"
-              value={formData.favicon}
-              onChange={(url) => setFormData({ ...formData, favicon: url })}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <ImageUploader
+                  label="Logo Light Mode (for light theme)"
+                  value={formData.logoLight}
+                  placeholder="/logo-light.svg or https://..."
+                  onChange={(url) => {
+                    setFormData((prev) => ({
+                      ...prev,
+                      logoLight: url,
+                      // If dark mode is empty or broken, auto-sync so the site immediately displays it!
+                      logoDark: !prev.logoDark || prev.logoDark.includes('googleusercontent.com') ? url : prev.logoDark,
+                    }));
+                  }}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <ImageUploader
+                  label="Logo Dark Mode (for dark theme & navbar)"
+                  value={formData.logoDark}
+                  placeholder="/logo-dark.svg or https://..."
+                  onChange={(url) => {
+                    setFormData((prev) => ({
+                      ...prev,
+                      logoDark: url,
+                      // If light mode is empty or broken, auto-sync
+                      logoLight: !prev.logoLight || prev.logoLight.includes('googleusercontent.com') ? url : prev.logoLight,
+                    }));
+                  }}
+                />
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <ImageUploader
+                label="Favicon URL (Browser Tab Icon)"
+                value={formData.favicon}
+                placeholder="/favicon.svg or https://..."
+                onChange={(url) => setFormData({ ...formData, favicon: url })}
+              />
+            </div>
+
+            {/* Live Logo Previews */}
+            <div className="pt-3 border-t border-[#3d494c]/30">
+              <span className="block text-[11px] font-mono uppercase text-[#869397] mb-2.5">
+                Live Rendering Previews
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Dark Preview */}
+                <div className="p-4 rounded-xl bg-[#131315] border border-[#2a2a2c] flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={formData.logoDark || formData.logoLight || '/logo-dark.svg'}
+                      alt="Dark Mode Preview"
+                      className="h-8 w-auto max-w-[100px] object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/logo-dark.svg';
+                      }}
+                    />
+                    <div className="flex flex-col">
+                      <span className="font-heading text-sm font-bold text-white">
+                        {formData.siteTitle || 'RUSA TECH'}
+                      </span>
+                      <span className="font-mono text-[9px] text-[#869397]">Dark Navbar</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                    Dark Live
+                  </span>
+                </div>
+
+                {/* Light Preview */}
+                <div className="p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={formData.logoLight || formData.logoDark || '/logo-light.svg'}
+                      alt="Light Mode Preview"
+                      className="h-8 w-auto max-w-[100px] object-contain"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/logo-light.svg';
+                      }}
+                    />
+                    <div className="flex flex-col">
+                      <span className="font-heading text-sm font-bold text-slate-900">
+                        {formData.siteTitle || 'RUSA TECH'}
+                      </span>
+                      <span className="font-mono text-[9px] text-slate-500">Light Navbar</span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-mono text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">
+                    Light Live
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

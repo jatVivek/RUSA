@@ -16,6 +16,11 @@ export function ImageUploader({
 }: ImageUploaderProps) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState('');
+  const [previewError, setPreviewError] = useState(false);
+
+  React.useEffect(() => {
+    setPreviewError(false);
+  }, [value]);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -58,13 +63,21 @@ export function ImageUploader({
 
       <div className="flex gap-4 items-start">
         {/* Preview Frame */}
-        <div className="w-24 h-24 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/50 overflow-hidden shrink-0 relative group flex items-center justify-center">
-          {value ? (
+        <div className="w-24 h-24 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/50 overflow-hidden shrink-0 relative group flex items-center justify-center p-2">
+          {value && !previewError ? (
             <>
-              <img src={value} alt="Preview" className="w-full h-full object-cover" />
+              <img
+                src={value}
+                alt="Preview"
+                onError={() => setPreviewError(true)}
+                className="w-full h-full object-contain"
+              />
               <button
                 type="button"
-                onClick={() => onChange('')}
+                onClick={() => {
+                  onChange('');
+                  setPreviewError(false);
+                }}
                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity cursor-pointer"
                 title="Remove image"
               >
@@ -72,7 +85,10 @@ export function ImageUploader({
               </button>
             </>
           ) : (
-            <ImageIcon className="w-8 h-8 text-[#869397]/50" />
+            <div className="flex flex-col items-center justify-center gap-1 text-[#869397]/50">
+              <ImageIcon className="w-7 h-7" />
+              {previewError && <span className="text-[9px] text-amber-400/80 font-mono">Invalid URL</span>}
+            </div>
           )}
         </div>
 
@@ -84,7 +100,10 @@ export function ImageUploader({
               <input
                 type="text"
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={(e) => {
+                  setPreviewError(false);
+                  onChange(e.target.value);
+                }}
                 placeholder={placeholder}
                 className="w-full pl-9 pr-3 py-2 rounded-xl bg-[#2a2a2c] border border-[#3d494c]/40 text-xs text-white placeholder-[#869397] focus:outline-none focus:border-[var(--color-primary)] font-mono"
               />
@@ -95,7 +114,7 @@ export function ImageUploader({
               <span>{isUploading ? 'Uploading...' : 'Upload'}</span>
               <input
                 type="file"
-                accept="image/*"
+                accept="image/*,.svg,.ico,.avif"
                 onChange={handleFileUpload}
                 disabled={isUploading}
                 className="sr-only"
@@ -105,7 +124,7 @@ export function ImageUploader({
 
           {error && <p className="text-[11px] text-red-400 font-mono">{error}</p>}
           <p className="text-[11px] text-[#869397] font-mono">
-            Direct CDN URL, hotlinked asset, or upload JPEG/PNG/WebP/SVG (max 5MB).
+            Direct CDN URL, static asset path (e.g. /logo.svg), or upload SVG/PNG/WebP/JPEG (max 10MB).
           </p>
         </div>
       </div>

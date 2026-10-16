@@ -16,9 +16,23 @@ export function Navbar({ settings, onOpenAdmin, onOpenCaseStudy }: NavbarProps) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  const logoSrc =
-    (mode === 'dark' ? settings?.logoDark : settings?.logoLight) ||
-    'https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ';
+  const defaultDarkLogo = '/logo-dark.svg';
+  const defaultLightLogo = '/logo-light.svg';
+  const defaultLogo = mode === 'dark' ? defaultDarkLogo : defaultLightLogo;
+
+  // Prioritize mode-specific logo, fallback to other mode, then reliable local SVG
+  const rawLogo =
+    mode === 'dark'
+      ? settings?.logoDark || settings?.logoLight
+      : settings?.logoLight || settings?.logoDark;
+
+  const [imgError, setImgError] = useState(false);
+
+  React.useEffect(() => {
+    setImgError(false);
+  }, [rawLogo, mode]);
+
+  const activeLogo = (!imgError && rawLogo) || defaultLogo;
 
   const navLinks = [
     { label: 'Work', href: '#featured-projects' },
@@ -40,13 +54,15 @@ export function Navbar({ settings, onOpenAdmin, onOpenCaseStudy }: NavbarProps) 
       <div className="h-20 max-w-7xl mx-auto px-5 lg:px-12 flex items-center justify-between gap-4">
         {/* Zone 1: Brand Wordmark & Emblem */}
         <div className="flex items-center gap-3">
-          <a href="#" className="flex items-center gap-2.5 group">
+          <a href="#" className="flex items-center gap-3 group">
             <motion.img
+              key={activeLogo}
               whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
               transition={springHover}
-              src={logoSrc}
-              alt="RUSA TECH Emblem"
-              className="h-8 w-auto object-contain"
+              src={activeLogo}
+              onError={() => setImgError(true)}
+              alt={settings?.siteTitle || "RUSA TECH Emblem"}
+              className="h-9 w-auto max-w-[120px] object-contain shrink-0"
             />
             <div className="flex flex-col">
               <span className="font-heading text-lg font-bold tracking-tight text-[#e5e1e4] leading-tight">

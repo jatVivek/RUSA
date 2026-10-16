@@ -68,8 +68,8 @@ export async function getSite(req, res, next) {
       },
     };
 
-    // Cache-Control header for public cacheability (60s)
-    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=60, stale-while-revalidate=120');
+    // Ensure freshness so admin updates and logo changes immediately show across the site
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
 
     return successResponse(res, sitePayload, 'Site configuration retrieved successfully');
   } catch (err) {

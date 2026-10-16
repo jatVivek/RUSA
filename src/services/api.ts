@@ -29,7 +29,13 @@ function getAuthHeaders(): HeadersInit {
    ========================================================================== */
 
 export async function fetchSitePayload(): Promise<PublicSitePayload> {
-  const res = await fetch(`${API_BASE}/public/site`);
+  const res = await fetch(`${API_BASE}/public/site?_t=${Date.now()}`, {
+    cache: 'no-cache',
+    headers: {
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache',
+    },
+  });
   if (!res.ok) {
     throw new Error(`Failed to load site payload: ${res.statusText}`);
   }

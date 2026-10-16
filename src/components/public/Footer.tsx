@@ -24,6 +24,14 @@ const socialIconMap: Record<string, React.ReactNode> = {
 
 export function Footer({ settings, socials, onOpenAdminLogin }: FooterProps) {
   const shouldReduceMotion = useReducedMotion();
+  const [footerImgError, setFooterImgError] = React.useState(false);
+
+  const rawFooterLogo = settings?.logoDark || settings?.logoLight;
+  React.useEffect(() => {
+    setFooterImgError(false);
+  }, [rawFooterLogo]);
+
+  const footerLogo = (!footerImgError && rawFooterLogo) || '/logo-dark.svg';
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -49,17 +57,12 @@ export function Footer({ settings, socials, onOpenAdminLogin }: FooterProps) {
             className="md:col-span-5 space-y-4"
           >
             <div className="flex items-center gap-3">
-              {settings.logoLight ? (
-                <img
-                  src={settings.logoLight}
-                  alt={settings.siteTitle}
-                  className="h-8 w-auto object-contain"
-                />
-              ) : (
-                <div className="w-8 h-8 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/30 flex items-center justify-center font-mono font-bold">
-                  R
-                </div>
-              )}
+              <img
+                src={footerLogo}
+                alt={settings?.siteTitle || 'RUSA TECH'}
+                onError={() => setFooterImgError(true)}
+                className="h-8 w-auto max-w-[120px] object-contain shrink-0"
+              />
               <span className="font-heading font-bold text-lg text-white">
                 {settings.siteTitle || 'RUSA TECH'}
               </span>

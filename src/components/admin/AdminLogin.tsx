@@ -47,8 +47,11 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
 
         {/* Header */}
         <div className="text-center space-y-2 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] border border-[var(--color-primary)]/30 flex items-center justify-center mx-auto mb-3">
-            <Lock className="w-6 h-6" />
+          <div className="w-14 h-14 rounded-2xl bg-[#141416] border border-[#3d494c]/60 p-2.5 flex items-center justify-center mx-auto mb-3 shadow-[0_0_20px_rgba(6,182,212,0.25)] relative">
+            <img src="/logo-dark.svg" alt="RUSA TECH Emblem" className="w-full h-full object-contain" />
+            <div className="absolute -bottom-1 -right-1 p-1 rounded-full bg-[var(--color-primary)] text-black shadow-sm">
+              <Lock className="w-2.5 h-2.5" />
+            </div>
           </div>
           <h2 className="font-heading text-2xl font-bold text-white">
             RUSA TECH CMS Command Center
