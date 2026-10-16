@@ -1,0 +1,49 @@
+# robots.txt for Rusa Tech (https://rusatech.ai.studio/)
+# Policy for standard search engine crawlers and AI search/training agents
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+Disallow: /api/auth
+Sitemap: https://rusatech.ai.studio/sitemap.xml
+
+# OpenAI ChatGPT Search & Training
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic Claude
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity AI Engine
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /api/admin
+
+# Google AI Overviews & Gemini Training
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /

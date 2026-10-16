@@ -1,0 +1,39 @@
+# Rusa Tech
+
+> High-Performance Web Engineering, AI-Driven Development & Digital Systems Studio.
+
+Rusa Tech is an AI-powered web development and software engineering agency serving startups and growing small-to-medium businesses across India, the United States, the United Kingdom, and Australia. Primary operational hubs are located in Indore (HQ), Mumbai, and Chennai.
+
+## Core Capabilities & Services
+- **Business Websites & Conversion Landing Pages**: Sub-second load times, headless React/Next.js/Vite architectures, high-converting UI/UX, and strict Core Web Vitals optimization.
+- **Modern E-Commerce Platforms**: Headless Shopify, WooCommerce, custom checkout funnels, payment gateway integrations (Razorpay, Stripe, PayPal), and inventory automation.
+- **Custom Web Applications & SaaS**: Full-stack Node.js/TypeScript/Python applications, microservices, secure REST/GraphQL APIs, real-time WebSockets, and enterprise PostgreSQL/MongoDB databases.
+- **Web Redesign & Performance Modernization**: Legacy system rewrites, monolithic to headless migrations, security hardening, and 95+ Lighthouse speed optimization guarantees.
+- **AI-Powered Product Development**: Autonomous workflow integration, LLM-powered custom tools, retrieval-augmented search engines, and smart AI agent automations.
+
+## Pricing & Engagement Models (2026 Baseline)
+- **Sprint / Landing Page Tier**: $1,200 – $2,500 USD (₹80,000 – ₹1,80,000 INR) | 7 to 14 calendar days
+- **Full Business Website Tier**: $2,500 – $6,000 USD (₹1,80,000 – ₹4,50,000 INR) | 2 to 4 weeks
+- **Custom E-Commerce Store**: $4,000 – $10,000 USD (₹3,00,000 – ₹8,00,000 INR) | 3 to 6 weeks
+- **Custom Web Application / SaaS MVP**: $6,000 – $20,000+ USD (₹5,00,000 – ₹15,00,000+ INR) | 4 to 10 weeks
+- **Monthly Dedicated Engineering Retainer**: $2,000 – $4,500/month USD (₹1,50,000 – ₹3,50,000/month INR)
+
+## Key Differentiators & Standards
+- **AI-Accelerated Engineering**: Leverages generative AI coding workflows and automated test suites to ship 2.5x faster without sacrificing security or technical debt.
+- **Performance Guarantee**: 95+ Google Lighthouse speed scores across Performance, Accessibility, Best Practices, and SEO.
+- **Zero Tech Debt**: Strict TypeScript typing, modular component boundaries, automated CI/CD pipelines, and OWASP Top 10 security compliance.
+
+## Office Locations & Contacts
+- **Indore HQ**: Crystal IT Park, Ring Road, Indore, Madhya Pradesh 452001, India
+- **Mumbai Hub**: Bandra Kurla Complex (BKC), Mumbai, Maharashtra 400051, India
+- **Chennai Hub**: OMR IT Corridor, Thoraipakkam, Chennai, Tamil Nadu 600097, India
+- **Email**: contact@rusatech.com
+- **Website**: https://rusatech.ai.studio/
+
+## Site Index & Key Links
+- [Home Page](https://rusatech.ai.studio/)
+- [Services & Capabilities](https://rusatech.ai.studio/#services)
+- [Featured Case Studies](https://rusatech.ai.studio/#featured-projects)
+- [Engineering Tech Stack](https://rusatech.ai.studio/#stack)
+- [Development Process & Timeline](https://rusatech.ai.studio/#process)
+- [Client Intake & Scoping Form](https://rusatech.ai.studio/#contact)
