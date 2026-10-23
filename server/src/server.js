@@ -17,6 +17,9 @@ const UPLOADS_DIR = path.resolve(__dirname, '../uploads');
 
 export const app = express();
 
+// Trust reverse proxy (Cloud Run, Vercel, Google Cloud, Heroku) for accurate IP identification
+app.set('trust proxy', 1);
+
 // 1. Explicitly remove X-Powered-By to prevent technology fingerprinting
 app.disable('x-powered-by');
 

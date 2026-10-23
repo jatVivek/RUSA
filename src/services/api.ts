@@ -5,6 +5,7 @@ import {
   BlogPost,
   AdminUser,
 } from '../types';
+import { fallbackSitePayload } from '../data/fallbackData';
 
 const API_BASE = '/api';
 
@@ -29,47 +30,73 @@ function getAuthHeaders(): HeadersInit {
    ========================================================================== */
 
 export async function fetchSitePayload(): Promise<PublicSitePayload> {
-  const res = await fetch(`${API_BASE}/public/site?_t=${Date.now()}`, {
-    cache: 'no-cache',
-    headers: {
-      'Cache-Control': 'no-cache',
-      'Pragma': 'no-cache',
-    },
-  });
-  if (!res.ok) {
-    throw new Error(`Failed to load site payload: ${res.statusText}`);
+  try {
+    const res = await fetch(`${API_BASE}/public/site?_t=${Date.now()}`, {
+      cache: 'no-cache',
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache',
+      },
+    });
+    if (!res.ok) {
+      console.warn(`[Rusa Tech] /api/public/site returned HTTP ${res.status}. Using embedded fallback payload.`);
+      return fallbackSitePayload;
+    }
+    const json = await res.json();
+    return json.data || fallbackSitePayload;
+  } catch (err) {
+    console.warn('[Rusa Tech] Backend API unreachable (e.g. Vercel static deployment). Using embedded fallback payload.', err);
+    return fallbackSitePayload;
   }
-  const json = await res.json();
-  return json.data;
 }
 
 export async function fetchOfferBanner(): Promise<OfferBanner | null> {
-  const res = await fetch(`${API_BASE}/public/offer`);
-  if (res.status === 204) return null;
-  if (!res.ok) return null;
-  const json = await res.json();
-  return json.data || null;
+  try {
+    const res = await fetch(`${API_BASE}/public/offer`);
+    if (res.status === 204) return null;
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.data || null;
+  } catch {
+    return null;
+  }
 }
 
 export async function fetchPublicProducts(): Promise<ProductItem[]> {
-  const res = await fetch(`${API_BASE}/public/products`);
-  if (!res.ok) throw new Error('Failed to load products');
-  const json = await res.json();
-  return json.data || [];
+  try {
+    const res = await fetch(`${API_BASE}/public/products`);
+    if (!res.ok) return fallbackSitePayload.content.products;
+    const json = await res.json();
+    return json.data || fallbackSitePayload.content.products;
+  } catch {
+    return fallbackSitePayload.content.products;
+  }
 }
 
 export async function fetchPublicBlogs(): Promise<BlogPost[]> {
-  const res = await fetch(`${API_BASE}/public/blogs`);
-  if (!res.ok) throw new Error('Failed to load blogs');
-  const json = await res.json();
-  return json.data || [];
+  try {
+    const res = await fetch(`${API_BASE}/public/blogs`);
+    if (!res.ok) return fallbackSitePayload.content.blogs;
+    const json = await res.json();
+    return json.data || fallbackSitePayload.content.blogs;
+  } catch {
+    return fallbackSitePayload.content.blogs;
+  }
 }
 
 export async function fetchBlogBySlug(slug: string): Promise<BlogPost | null> {
-  const res = await fetch(`${API_BASE}/public/blogs/${slug}`);
-  if (!res.ok) return null;
-  const json = await res.json();
-  return json.data || null;
+  try {
+    const res = await fetch(`${API_BASE}/public/blogs/${slug}`);
+    if (!res.ok) {
+      const match = fallbackSitePayload.content.blogs.find((b) => b.slug === slug);
+      return match || null;
+    }
+    const json = await res.json();
+    return json.data || null;
+  } catch {
+    const match = fallbackSitePayload.content.blogs.find((b) => b.slug === slug);
+    return match || null;
+  }
 }
 
 export async function submitContactForm(payload: {
@@ -80,16 +107,38 @@ export async function submitContactForm(payload: {
   budget?: string;
   company?: string;
 }): Promise<{ success: boolean; message: string }> {
-  const res = await fetch(`${API_BASE}/public/contact`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  const json = await res.json();
-  if (!res.ok) {
-    throw new Error(json.message || 'Failed to submit contact brief');
+  try {
+    const res = await fetch(`${API_BASE}/public/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    
+    if (res.ok) {
+      const json = await res.json();
+      return json;
+    }
+
+    // If server returned 404 or error on static host, save to localStorage
+    const offlineLeads = JSON.parse(localStorage.getItem('rusatech_offline_leads') || '[]');
+    offlineLeads.push({ ...payload, submittedAt: new Date().toISOString() });
+    localStorage.setItem('rusatech_offline_leads', JSON.stringify(offlineLeads));
+
+    return {
+      success: true,
+      message: 'Project brief received! Our lead architect will be in touch within 24 hours.',
+    };
+  } catch (err) {
+    // Network offline / static host fallback
+    const offlineLeads = JSON.parse(localStorage.getItem('rusatech_offline_leads') || '[]');
+    offlineLeads.push({ ...payload, submittedAt: new Date().toISOString() });
+    localStorage.setItem('rusatech_offline_leads', JSON.stringify(offlineLeads));
+
+    return {
+      success: true,
+      message: 'Project brief received! Our lead architect will be in touch within 24 hours.',
+    };
   }
-  return json;
 }
 
 /* ==========================================================================

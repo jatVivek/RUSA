@@ -4,6 +4,7 @@ import rateLimit from 'express-rate-limit';
 export const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 500, // max 500 requests per IP per 15 minutes
+  validate: false,
   message: {
     success: false,
     message: 'Too many requests from this client. Please slow down and try again later.',
@@ -16,6 +17,7 @@ export const apiLimiter = rateLimit({
 export const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // strict limit against credential brute force
+  validate: false,
   message: {
     success: false,
     message: 'Too many authentication attempts. Please try again in 15 minutes.',
@@ -28,6 +30,7 @@ export const authLimiter = rateLimit({
 export const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 10, // limit spam submissions
+  validate: false,
   message: {
     success: false,
     message: 'Too many contact requests from this client. Please try again later.',
@@ -40,6 +43,7 @@ export const contactLimiter = rateLimit({
 export const uploadLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 30, // max 30 uploads per 15 mins
+  validate: false,
   message: {
     success: false,
     message: 'Upload rate limit reached. Please wait before uploading more files.',
