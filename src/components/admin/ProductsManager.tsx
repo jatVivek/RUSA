@@ -184,8 +184,18 @@ export function ProductsManager({ products, onRefresh }: ProductsManagerProps) {
                 </div>
 
                 {/* Thumbnail */}
-                <div className="w-20 h-14 rounded-lg bg-[#2a2a2c] overflow-hidden shrink-0 border border-[#3d494c]/40">
-                  <img src={coverImg} alt={item.title} className="w-full h-full object-cover" />
+                <div className="w-20 h-14 rounded-lg bg-[#2a2a2c] overflow-hidden shrink-0 border border-[#3d494c]/40 flex items-center justify-center">
+                  <img
+                    src={coverImg}
+                    alt={item.title}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('aida-public')) {
+                        target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU';
+                      }
+                    }}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 <div className="space-y-1">

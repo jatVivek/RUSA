@@ -97,9 +97,14 @@ export function FeaturedProjectsSection({
                     initial={shouldReduceMotion ? false : { scale: 1.1 }}
                     whileInView={{ scale: 1 }}
                     viewport={defaultViewport}
-                    transition={{ duration: 0.8, ease: cubicEntrance }}
                     src={coverImg}
                     alt={product.title}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('aida-public')) {
+                        target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU';
+                      }
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ willChange: 'transform' }}
                   />

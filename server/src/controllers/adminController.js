@@ -244,18 +244,19 @@ export async function uploadImage(req, res, next) {
       return errorResponse(res, 'No image file provided in request', 400);
     }
 
-    // Return the hosted path (or data URL / static path)
-    const fileUrl = `/uploads/${req.file.filename}`;
+    const mime = req.file.mimetype || 'image/png';
+    const base64 = req.file.buffer ? req.file.buffer.toString('base64') : '';
+    const dataUrl = `data:${mime};base64,${base64}`;
+
     return successResponse(
       res,
       {
-        url: fileUrl,
-        filename: req.file.filename,
+        url: dataUrl,
         originalName: req.file.originalname,
         size: req.file.size,
-        mimeType: req.file.mimetype,
+        mimeType: mime,
       },
-      'Image uploaded successfully',
+      'Image uploaded and attached successfully',
       201
     );
   } catch (err) {
