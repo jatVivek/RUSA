@@ -4,12 +4,26 @@ import fs from 'fs';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
+import os from 'os';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const UPLOAD_DIR = path.resolve(__dirname, '../../uploads');
 
-if (!fs.existsSync(UPLOAD_DIR)) {
-  fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+// Serverless-safe upload directory: fallback to os.tmpdir() on read-only filesystems (Vercel, AWS Lambda)
+let UPLOAD_DIR = path.resolve(__dirname, '../../uploads');
+try {
+  if (!fs.existsSync(UPLOAD_DIR)) {
+    fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+  }
+} catch {
+  UPLOAD_DIR = path.join(os.tmpdir(), 'rusatech_uploads');
+  try {
+    if (!fs.existsSync(UPLOAD_DIR)) {
+      fs.mkdirSync(UPLOAD_DIR, { recursive: true });
+    }
+  } catch {
+    UPLOAD_DIR = os.tmpdir();
+  }
 }
 
 const MIME_MAP = {

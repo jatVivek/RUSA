@@ -9,9 +9,13 @@ const __dirname = path.dirname(__filename);
 const DATA_DIR = path.resolve(__dirname, '../../data');
 const DATA_FILE = path.join(DATA_DIR, 'db.json');
 
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
+// Ensure data directory exists (guarded for read-only serverless runtimes)
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+} catch {
+  // Read-only filesystem (e.g. Vercel Serverless)
 }
 
 export let isUsingMongo = false;

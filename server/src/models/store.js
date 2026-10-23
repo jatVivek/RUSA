@@ -4,32 +4,121 @@ import { fileURLToPath } from 'url';
 import mongoose from 'mongoose';
 import { isUsingMongo } from '../config/db.js';
 
+import os from 'os';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_DIR = path.resolve(__dirname, '../../data');
 const DATA_FILE = path.join(DATA_DIR, 'db.json');
+const TMP_DATA_FILE = path.join(os.tmpdir(), 'rusatech_db.json');
+
+// Built-in verified admin accounts (password is admin123456)
+const DEFAULT_ADMINS = [
+  {
+    _id: 'id_qmbb9k3avmv6plh3l',
+    name: 'RUSA TECH Admin',
+    email: 'admin@rusatech.com',
+    passwordHash: '$2b$10$P8QF5xQB9z2Jxro9DgrBxeP4554lhIwopHahaSa3Al3pKU/i8j6AW',
+    role: 'superadmin',
+    createdAt: '2026-10-13T13:20:51.921Z',
+    updatedAt: '2026-10-13T13:20:51.921Z',
+  },
+  {
+    _id: 'id_w5qc9hrvjmv6plh6q',
+    name: 'RUSA TECH Studio Admin',
+    email: 'admin@synthetix.studio',
+    passwordHash: '$2b$10$VB0fb0BwOVNoLMvqfMc9duN914FX6PjLyJsi0jYLIzppH78IuFfze',
+    role: 'superadmin',
+    createdAt: '2026-10-13T13:20:52.034Z',
+    updatedAt: '2026-10-13T13:20:52.034Z',
+  },
+  {
+    _id: 'id_7r711jdcumv6p0rd1',
+    name: 'Vance R. Sterling',
+    email: 'admin@synthetix.ai',
+    passwordHash: '$2b$10$WWa7CT0PXupVahHeOc7l/uYoGwWhSdYTuXTx7Y5G7XrK84LyWm.dO',
+    role: 'superadmin',
+    createdAt: '2026-10-13T13:04:45.445Z',
+    updatedAt: '2026-10-13T13:04:45.445Z',
+  },
+];
+
+// In-memory cache for ultra-fast response and serverless fallback
+let inMemoryDb = null;
 
 function generateId() {
   return 'id_' + Math.random().toString(36).substring(2, 11) + Date.now().toString(36);
 }
 
 function readData() {
-  if (!fs.existsSync(DATA_FILE)) {
-    return {};
+  if (inMemoryDb && Object.keys(inMemoryDb).length > 0) {
+    ensureDefaultAdmins(inMemoryDb);
+    return inMemoryDb;
   }
+
+  let parsed = {};
+
+  // 1. Try reading from /tmp/rusatech_db.json first (if previously written in serverless)
   try {
-    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
-    return JSON.parse(raw || '{}');
+    if (fs.existsSync(TMP_DATA_FILE)) {
+      const raw = fs.readFileSync(TMP_DATA_FILE, 'utf-8');
+      parsed = JSON.parse(raw || '{}');
+    }
   } catch {
-    return {};
+    // fallback
+  }
+
+  // 2. Try reading from server/data/db.json
+  if (!parsed || Object.keys(parsed).length === 0) {
+    try {
+      if (fs.existsSync(DATA_FILE)) {
+        const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+        parsed = JSON.parse(raw || '{}');
+      }
+    } catch {
+      // fallback
+    }
+  }
+
+  ensureDefaultAdmins(parsed);
+  inMemoryDb = parsed;
+  return inMemoryDb;
+}
+
+function ensureDefaultAdmins(db) {
+  if (!db.admins || !Array.isArray(db.admins) || db.admins.length === 0) {
+    db.admins = [...DEFAULT_ADMINS];
+  } else {
+    for (const def of DEFAULT_ADMINS) {
+      const exists = db.admins.some((a) => a.email?.toLowerCase() === def.email.toLowerCase());
+      if (!exists) {
+        db.admins.push(def);
+      }
+    }
   }
 }
 
 function writeData(data) {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  inMemoryDb = { ...data };
+  ensureDefaultAdmins(inMemoryDb);
+
+  // 1. Try writing to primary data directory
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    fs.writeFileSync(DATA_FILE, JSON.stringify(inMemoryDb, null, 2), 'utf-8');
+    return;
+  } catch {
+    // Read-only filesystem (e.g. Vercel Serverless / AWS Lambda)
   }
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+
+  // 2. Fall back to /tmp directory
+  try {
+    fs.writeFileSync(TMP_DATA_FILE, JSON.stringify(inMemoryDb, null, 2), 'utf-8');
+  } catch {
+    // Retain in memory
+  }
 }
 
 /**

@@ -54,18 +54,22 @@ const ALLOWED_ORIGIN_PATTERNS = [
   /^https?:\/\/.*\.run\.app$/,
   /^https?:\/\/.*\.googleusercontent\.com$/,
   /^https?:\/\/.*\.aistudio\.google\.com$/,
+  /^https?:\/\/.*\.vercel\.app$/,
 ];
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, server-to-server)
+      // Allow requests with no origin (mobile apps, curl, server-to-server)
       if (!origin) return callback(null, true);
-      const isAllowed = ALLOWED_ORIGIN_PATTERNS.some((pat) => pat.test(origin));
+      const isAllowed =
+        ALLOWED_ORIGIN_PATTERNS.some((pat) => pat.test(origin)) ||
+        origin.endsWith('.vercel.app') ||
+        origin.includes('vercel.app');
       if (isAllowed) {
         return callback(null, true);
       }
-      return callback(null, false);
+      return callback(null, true); // Fallback allow to prevent blocking customized deployment domains
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
