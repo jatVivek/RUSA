@@ -214,6 +214,7 @@ export interface PublicSitePayload {
     products: ProductItem[];
     blogs: BlogPost[];
   };
+  offerBanner?: OfferBanner | null;
 }
 
 export interface AdminUser {

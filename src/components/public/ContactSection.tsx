@@ -43,9 +43,20 @@ export function ContactSection({ contactEmail, phone }: ContactSectionProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) {
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       setStatus('error');
-      setErrorMessage('Please fill in your name, email, and project scope.');
+      setErrorMessage('Please fill in your name, valid email, and project scope.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setStatus('error');
+      setErrorMessage('Please provide a valid work email address (e.g. name@company.com).');
       return;
     }
 
@@ -53,7 +64,13 @@ export function ContactSection({ contactEmail, phone }: ContactSectionProps) {
     setErrorMessage('');
 
     try {
-      await submitContactForm(formData);
+      await submitContactForm({
+        ...formData,
+        name: trimmedName,
+        email: trimmedEmail,
+        company: formData.company.trim(),
+        message: trimmedMessage,
+      });
       setStatus('success');
       setFormData({
         name: '',
@@ -71,6 +88,8 @@ export function ContactSection({ contactEmail, phone }: ContactSectionProps) {
 
   return (
     <section className="w-full px-5 lg:px-12 py-24 relative overflow-hidden" id="audit-booking">
+      <span id="pricing" className="absolute -top-24 pointer-events-none" />
+      <span id="contact" className="absolute -top-24 pointer-events-none" />
       {/* Background Accent Gradients */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-[var(--color-primary)]/10 via-[var(--color-secondary)]/10 to-[#10b981]/10 blur-[150px] rounded-full pointer-events-none" />
 
@@ -326,7 +345,7 @@ export function ContactSection({ contactEmail, phone }: ContactSectionProps) {
                     }
                     whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                     transition={springHover}
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-[var(--color-gradient-start)] to-[var(--color-gradient-end)] text-white font-medium text-sm shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 relative overflow-hidden"
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-[var(--color-gradient-start)] to-[var(--color-gradient-end)] text-white font-medium text-sm shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:brightness-110 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed relative overflow-hidden"
                   >
                     <AnimatePresence mode="wait">
                       {status === 'submitting' ? (

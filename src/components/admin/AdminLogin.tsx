@@ -29,13 +29,26 @@ export function AdminLogin({ onSuccess, onCancel }: AdminLoginProps) {
     }
   };
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCancel();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onCancel]);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
+    <div
+      onClick={onCancel}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn cursor-pointer"
+    >
       {/* Background Accent */}
       <div className="absolute w-[500px] h-[500px] bg-[var(--color-primary)]/15 blur-[140px] rounded-full pointer-events-none" />
 
       <div
-        className="w-full max-w-md bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 p-8 shadow-2xl relative z-10"
+        className="w-full max-w-md bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 p-8 shadow-2xl relative z-10 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         <button

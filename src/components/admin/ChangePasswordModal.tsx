@@ -41,9 +41,16 @@ export function ChangePasswordModal({ isOpen, onClose }: ChangePasswordModalProp
         body: JSON.stringify({ currentPassword, newPassword }),
       });
 
-      const json = await res.json();
+      const text = await res.text();
+      let json: any = null;
+      try {
+        json = JSON.parse(text);
+      } catch {
+        // non-json
+      }
+
       if (!res.ok) {
-        throw new Error(json.message || 'Failed to change password');
+        throw new Error(json?.message || 'Failed to change password');
       }
 
       setSuccess(true);
@@ -58,10 +65,24 @@ export function ChangePasswordModal({ isOpen, onClose }: ChangePasswordModalProp
     }
   };
 
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md cursor-pointer"
+    >
       <div
-        className="w-full max-w-md bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 p-6 shadow-2xl relative space-y-5"
+        className="w-full max-w-md bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 p-6 shadow-2xl relative space-y-5 cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between pb-3 border-b border-[#3d494c]/30">

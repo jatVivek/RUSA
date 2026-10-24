@@ -22,12 +22,26 @@ export function ConfirmDialog({
   onConfirm,
   onCancel,
 }: ConfirmDialogProps) {
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onCancel();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onCancel]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+    <div
+      onClick={onCancel}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn cursor-pointer"
+    >
       <div
-        className="w-full max-w-md bg-[#201f22] rounded-2xl border border-[#3d494c]/60 p-6 shadow-2xl relative"
+        className="w-full max-w-md bg-[#201f22] rounded-2xl border border-[#3d494c]/60 p-6 shadow-2xl relative cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         <button

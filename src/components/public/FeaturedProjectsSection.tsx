@@ -16,6 +16,16 @@ interface FeaturedProjectsSectionProps {
   onOpenCaseStudy: (product?: ProductItem) => void;
 }
 
+function sanitizeExternalUrl(url?: string): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+  if (!trimmed || trimmed.toLowerCase().startsWith('javascript:')) return null;
+  if (/^(https?:\/\/|\/|#)/i.test(trimmed)) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+}
+
 export function FeaturedProjectsSection({
   products,
   onOpenCaseStudy,
@@ -162,20 +172,24 @@ export function FeaturedProjectsSection({
                     </button>
 
                     <div className="flex items-center gap-3">
-                      {product.url ? (
-                        <motion.a
-                          href={product.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
-                          whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
-                          transition={springHover}
-                          className="px-2.5 py-1 rounded-md bg-[#2a2a2c] hover:bg-[#353437] text-xs text-[#e5e1e4] font-medium inline-flex items-center gap-1 transition-colors"
-                        >
-                          <span>Visit</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </motion.a>
-                      ) : null}
+                      {(() => {
+                        const safeUrl = sanitizeExternalUrl(product.url);
+                        if (!safeUrl) return null;
+                        return (
+                          <motion.a
+                            href={safeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
+                            whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
+                            transition={springHover}
+                            className="px-2.5 py-1 rounded-md bg-[#2a2a2c] hover:bg-[#353437] text-xs text-[#e5e1e4] font-medium inline-flex items-center gap-1 transition-colors"
+                          >
+                            <span>Visit</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </motion.a>
+                        );
+                      })()}
 
                       <span className="font-mono text-[11px] text-[#869397]">
                         {product.metricLabel || '<50ms Latency'}

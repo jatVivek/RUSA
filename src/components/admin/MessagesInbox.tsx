@@ -20,7 +20,40 @@ export function MessagesInbox() {
     try {
       setLoading(true);
       const res = await fetchAdminResource<ContactMessage[]>('messages');
-      setMessages(res || []);
+      const serverList = Array.isArray(res) ? res : [];
+
+      // Merge with any offline leads saved in localStorage
+      let offlineList: any[] = [];
+      try {
+        const raw = localStorage.getItem('rusatech_offline_leads');
+        if (raw) {
+          offlineList = JSON.parse(raw);
+        }
+      } catch {
+        // ignore
+      }
+
+      const formattedOffline: ContactMessage[] = offlineList.map((item, idx) => ({
+        _id: item._id || `offline_${idx}_${item.submittedAt || Date.now()}`,
+        name: item.name || 'Inquiry',
+        email: item.email || '',
+        company: item.company || '',
+        projectType: item.projectType || 'SaaS Web App',
+        budget: item.budget || '$25,000 - $50,000',
+        message: item.message || '',
+        isRead: Boolean(item.isRead),
+        createdAt: item.submittedAt || new Date().toISOString(),
+        updatedAt: item.submittedAt || new Date().toISOString(),
+      }));
+
+      const combined = [...serverList];
+      for (const off of formattedOffline) {
+        if (!combined.some((m) => m._id === off._id || (m.email === off.email && m.message === off.message))) {
+          combined.unshift(off);
+        }
+      }
+
+      setMessages(combined);
     } catch (err: any) {
       setError(err.message || 'Failed to load messages');
     } finally {
@@ -34,7 +67,20 @@ export function MessagesInbox() {
 
   const handleMarkRead = async (msg: ContactMessage) => {
     try {
-      await updateAdminResource('messages', msg._id, { isRead: true });
+      if (msg._id.startsWith('offline_')) {
+        const raw = localStorage.getItem('rusatech_offline_leads');
+        if (raw) {
+          const list = JSON.parse(raw);
+          const idx = list.findIndex((it: any) => it._id === msg._id || it.email === msg.email);
+          if (idx !== -1) {
+            list[idx].isRead = true;
+            localStorage.setItem('rusatech_offline_leads', JSON.stringify(list));
+          }
+        }
+      } else {
+        await updateAdminResource('messages', msg._id, { isRead: true });
+      }
+
       setMessages((prev) =>
         prev.map((m) => (m._id === msg._id ? { ...m, isRead: true } : m))
       );
@@ -49,7 +95,16 @@ export function MessagesInbox() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      await deleteAdminResource('messages', deleteTarget._id);
+      if (deleteTarget._id.startsWith('offline_')) {
+        const raw = localStorage.getItem('rusatech_offline_leads');
+        if (raw) {
+          const list = JSON.parse(raw);
+          const filtered = list.filter((it: any) => it._id !== deleteTarget._id && it.email !== deleteTarget.email);
+          localStorage.setItem('rusatech_offline_leads', JSON.stringify(filtered));
+        }
+      } else {
+        await deleteAdminResource('messages', deleteTarget._id);
+      }
       setMessages((prev) => prev.filter((m) => m._id !== deleteTarget._id));
       if (selectedMessage?._id === deleteTarget._id) {
         setSelectedMessage(null);

@@ -30,14 +30,28 @@ export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
   const [demoRunning, setDemoRunning] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
+
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-3 sm:p-6 lg:p-10">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/85 backdrop-blur-md flex justify-center p-3 sm:p-6 lg:p-10 cursor-pointer"
+    >
       <motion.div
+        onClick={(e) => e.stopPropagation()}
         initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.35, ease: cubicEntrance }}
-        className="relative w-full max-w-6xl bg-[#131315] border border-[#3d494c]/50 rounded-2xl shadow-2xl overflow-hidden my-auto text-[#e5e1e4]"
+        className="relative w-full max-w-6xl bg-[#131315] border border-[#3d494c]/50 rounded-2xl shadow-2xl overflow-hidden my-auto text-[#e5e1e4] cursor-default"
       >
         {/* Top Dismiss Button */}
         <button
@@ -414,7 +428,11 @@ export function CaseStudyModal({ product, onClose }: CaseStudyModalProps) {
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFce3FDHOdDSmHb4OHxii29U3BNyNCXk1IznEjtxIOMfXbMMPgNtt4WpIK9WMibDr1J-FP_gBkBicykJuAETUyN7B7c9rWaz7XcER9FyC_dAY9ih4FCBqElCJZgrgEslJn8XPEyGP7vmw-IWstAYNKz1vVnABpcnreeNVo0K95dR95n9jdyMaKQF-Db4DgEIS1B4-_r4TZAtKDM4ANnfZBP-6cCrrbGl-1gjD83X172It8qIC_E2Y"
                   alt="Julian Vance"
-                  className="w-12 h-12 rounded-full object-cover"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src =
+                      'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><rect width="48" height="48" fill="%23201f22"/><text x="50%" y="50%" fill="%23869397" font-size="14" font-family="sans-serif" text-anchor="middle" dy=".3em">JV</text></svg>';
+                  }}
+                  className="w-12 h-12 rounded-full object-cover bg-[#201f22]"
                 />
                 <div>
                   <div className="font-heading text-sm font-bold text-[#e5e1e4]">Julian Vance, Ph.D.</div>

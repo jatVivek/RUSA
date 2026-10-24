@@ -27,6 +27,17 @@ export function BlogSection({ blogs }: BlogSectionProps) {
   const [voteCount, setVoteCount] = useState<Record<string, number>>({});
   const shouldReduceMotion = useReducedMotion();
 
+  React.useEffect(() => {
+    if (!selectedPaper) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedPaper(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPaper]);
+
   if (!blogs || blogs.length === 0) return null;
 
   const publishedBlogs = blogs.filter((b) => b.isActive && b.status === 'published');
@@ -124,6 +135,12 @@ export function BlogSection({ blogs }: BlogSectionProps) {
                         transition={{ duration: 0.8, ease: cubicEntrance }}
                         src={blog.coverImage}
                         alt={blog.title}
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          if (!target.src.includes('aida-public')) {
+                            target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAXmSZ94v_M04GhLcnLoA_K4Ncag4bbtM-AFxUrPHFmxEzeznXNMwPZCOnR7MiZ-gj9FpwT9f8cXyG1ZcUxYS1OMPL0E8BEjDSCCG57gfglehilPrK03-LG6Rrxw0D-rq7jqlUErdSe0Si_MOK1ijyPukXVrBE8OZgX5ENOFPop5cMmJ07foicV7nMCwDzlOxkv1zNEpB0LOE7qLP1mSfpfps3JDzJB8Ps68iX2bbaPHSYUHvviN18';
+                          }
+                        }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         style={{ willChange: 'transform' }}
                       />
@@ -188,13 +205,16 @@ export function BlogSection({ blogs }: BlogSectionProps) {
       {/* Whitepaper Detail Modal with AnimatePresence */}
       <AnimatePresence>
         {selectedPaper && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto">
+          <div
+            onClick={() => setSelectedPaper(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto cursor-pointer"
+          >
             <motion.div
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: cubicEntrance }}
-              className="relative w-full max-w-4xl bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden my-8 max-h-[90vh] flex flex-col"
+              className="relative w-full max-w-4xl bg-[#1b1b1d] rounded-2xl border border-[#3d494c]/60 shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden my-8 max-h-[90vh] flex flex-col cursor-default"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -210,7 +230,7 @@ export function BlogSection({ blogs }: BlogSectionProps) {
                       </span>
                     )}
                     <span className="font-mono text-xs text-[#869397]">
-                      Published: {new Date(selectedPaper.publishedAt).toLocaleDateString()}
+                      Published: {selectedPaper.publishedAt ? new Date(selectedPaper.publishedAt).toLocaleDateString() : 'Active Architecture Report'}
                     </span>
                   </div>
                   <h2 className="font-heading text-2xl sm:text-3xl font-bold text-white">

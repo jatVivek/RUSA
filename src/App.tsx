@@ -41,13 +41,33 @@ function PortfolioContent() {
         setTheme(data.theme);
       }
 
-      // Sync document metadata
+      // Sync document metadata & social share cards
       if (data.settings) {
-        document.title = data.settings.seoTitle || data.settings.siteTitle || 'RUSA TECH';
+        const title = data.settings.seoTitle || data.settings.siteTitle || 'RUSA TECH';
+        const description = data.settings.seoDescription || data.settings.tagline || '';
+        const ogImage = data.settings.ogImage || data.settings.logoDark || '/logo-dark.svg';
+
+        document.title = title;
         const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-          metaDesc.setAttribute('content', data.settings.seoDescription || data.settings.tagline || '');
-        }
+        if (metaDesc) metaDesc.setAttribute('content', description);
+
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', title);
+
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) ogDesc.setAttribute('content', description);
+
+        const ogImg = document.querySelector('meta[property="og:image"]');
+        if (ogImg && ogImage) ogImg.setAttribute('content', ogImage);
+
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) twTitle.setAttribute('content', title);
+
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) twDesc.setAttribute('content', description);
+
+        const twImg = document.querySelector('meta[name="twitter:image"]');
+        if (twImg && ogImage) twImg.setAttribute('content', ogImage);
 
         const faviconUrl = data.settings.favicon || data.settings.logoDark || '/favicon.svg';
         let faviconLink = document.querySelector("link[rel~='icon']") as HTMLLinkElement;

@@ -27,7 +27,89 @@ function getAuthHeaders(): HeadersInit {
 
 /* ==========================================================================
    PUBLIC API
+/* ==========================================================================
+   PUBLIC API
    ========================================================================== */
+
+/**
+ * Enriches site payload with any client-side CMS overrides stored in localStorage.
+ * Guarantees that branding, logos, theme, and custom content persist across reloads
+ * even during serverless cold starts or static deployments.
+ */
+function enrichWithLocalCmsOverrides(base: PublicSitePayload): PublicSitePayload {
+  try {
+    const payload: PublicSitePayload = JSON.parse(JSON.stringify(base));
+
+    // Settings & Branding
+    const savedSettings = localStorage.getItem('rusatech_cms_settings');
+    if (savedSettings) {
+      payload.settings = { ...payload.settings, ...JSON.parse(savedSettings) };
+    }
+
+    // Theme Engine
+    const savedTheme = localStorage.getItem('rusatech_cms_theme');
+    if (savedTheme) {
+      payload.theme = { ...payload.theme, ...JSON.parse(savedTheme) };
+    }
+
+    // Singletons in content
+    const savedHero = localStorage.getItem('rusatech_cms_hero');
+    if (savedHero) {
+      payload.content.hero = { ...payload.content.hero, ...JSON.parse(savedHero) };
+    }
+
+    const savedAbout = localStorage.getItem('rusatech_cms_about');
+    if (savedAbout) {
+      payload.content.about = { ...payload.content.about, ...JSON.parse(savedAbout) };
+    }
+
+    // Collections
+    const savedProducts = localStorage.getItem('rusatech_cms_products');
+    if (savedProducts) {
+      payload.content.products = JSON.parse(savedProducts);
+    }
+
+    const savedBlogs = localStorage.getItem('rusatech_cms_blogs');
+    if (savedBlogs) {
+      payload.content.blogs = JSON.parse(savedBlogs);
+    }
+
+    const savedServices = localStorage.getItem('rusatech_cms_services');
+    if (savedServices) {
+      payload.content.services = JSON.parse(savedServices);
+    }
+
+    const savedSkills = localStorage.getItem('rusatech_cms_skills');
+    if (savedSkills) {
+      payload.content.skills = JSON.parse(savedSkills);
+    }
+
+    const savedExperience = localStorage.getItem('rusatech_cms_experience');
+    if (savedExperience) {
+      payload.content.experience = JSON.parse(savedExperience);
+    }
+
+    const savedTestimonials = localStorage.getItem('rusatech_cms_testimonials');
+    if (savedTestimonials) {
+      payload.content.testimonials = JSON.parse(savedTestimonials);
+    }
+
+    const savedSocials = localStorage.getItem('rusatech_cms_socials');
+    if (savedSocials) {
+      payload.socials = JSON.parse(savedSocials);
+    }
+
+    const savedSections = localStorage.getItem('rusatech_cms_sections');
+    if (savedSections) {
+      payload.sections = JSON.parse(savedSections);
+    }
+
+    return payload;
+  } catch (err) {
+    console.warn('[Rusa Tech] Error applying local CMS overrides:', err);
+    return base;
+  }
+}
 
 export async function fetchSitePayload(): Promise<PublicSitePayload> {
   try {
@@ -39,27 +121,48 @@ export async function fetchSitePayload(): Promise<PublicSitePayload> {
       },
     });
     if (!res.ok) {
-      console.warn(`[Rusa Tech] /api/public/site returned HTTP ${res.status}. Using embedded fallback payload.`);
-      return fallbackSitePayload;
+      return enrichWithLocalCmsOverrides(fallbackSitePayload);
     }
     const json = await res.json();
-    return json.data || fallbackSitePayload;
-  } catch (err) {
-    console.warn('[Rusa Tech] Backend API unreachable (e.g. Vercel static deployment). Using embedded fallback payload.', err);
-    return fallbackSitePayload;
+    return enrichWithLocalCmsOverrides(json.data || fallbackSitePayload);
+  } catch {
+    return enrichWithLocalCmsOverrides(fallbackSitePayload);
   }
 }
 
 export async function fetchOfferBanner(): Promise<OfferBanner | null> {
   try {
     const res = await fetch(`${API_BASE}/public/offer`);
-    if (res.status === 204) return null;
-    if (!res.ok) return null;
-    const json = await res.json();
-    return json.data || null;
+    if (res.ok) {
+      const json = await res.json();
+      if (json.data && json.data.isActive) {
+        const now = new Date();
+        if (json.data.startsAt && new Date(json.data.startsAt) > now) return null;
+        if (json.data.endsAt && new Date(json.data.endsAt) < now) return null;
+        return json.data;
+      }
+    }
   } catch {
-    return null;
+    // fallback
   }
+
+  // Check local override
+  try {
+    const saved = localStorage.getItem('rusatech_cms_offer');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.isActive) {
+        const now = new Date();
+        if (parsed.startsAt && new Date(parsed.startsAt) > now) return null;
+        if (parsed.endsAt && new Date(parsed.endsAt) < now) return null;
+        return parsed;
+      }
+    }
+  } catch {
+    // ignore
+  }
+
+  return fallbackSitePayload.offerBanner || null;
 }
 
 export async function fetchPublicProducts(): Promise<ProductItem[]> {
@@ -276,31 +379,82 @@ export async function getAdminProfile(): Promise<AdminUser | null> {
    ADMIN CMS APIS
    ========================================================================== */
 
-function getLocalResourceStore(resource: string): any[] {
-  const key = `rusatech_cms_${resource}`;
-  const local = localStorage.getItem(key);
+const SINGLETON_MAP: Record<string, string> = {
+  settings: 'settings',
+  sitesettings: 'settings',
+  sitesetting: 'settings',
+  theme: 'theme',
+  themes: 'theme',
+  hero: 'hero',
+  heros: 'hero',
+  about: 'about',
+  abouts: 'about',
+  offer: 'offer',
+  offerbanner: 'offer',
+  offerbanners: 'offer',
+};
+
+function normalizeResourceKey(resource: string): { isSingleton: boolean; key: string } {
+  const lower = (resource || '').toLowerCase().replace(/[-_]/g, '');
+  if (SINGLETON_MAP[lower]) {
+    return { isSingleton: true, key: SINGLETON_MAP[lower] };
+  }
+  return { isSingleton: false, key: lower };
+}
+
+function getLocalResourceStore(resource: string): any {
+  const { isSingleton, key } = normalizeResourceKey(resource);
+  const storageKey = `rusatech_cms_${key}`;
+  const local = localStorage.getItem(storageKey);
+
+  if (isSingleton) {
+    if (local) {
+      try {
+        return JSON.parse(local);
+      } catch {
+        // ignore
+      }
+    }
+    // Defaults from fallbackSitePayload
+    if (key === 'settings') return { ...fallbackSitePayload.settings };
+    if (key === 'theme') return { ...fallbackSitePayload.theme };
+    if (key === 'hero') return { ...fallbackSitePayload.content.hero };
+    if (key === 'about') return { ...fallbackSitePayload.content.about };
+    if (key === 'offer') return fallbackSitePayload.offerBanner ? { ...fallbackSitePayload.offerBanner } : null;
+    return {};
+  }
+
+  // Collections (arrays)
   if (local) {
     try {
-      return JSON.parse(local);
+      const parsed = JSON.parse(local);
+      if (Array.isArray(parsed)) return parsed;
     } catch {
       // ignore
     }
   }
+
   const content = fallbackSitePayload.content as Record<string, any>;
-  return content[resource] ? [...content[resource]] : [];
+  if (Array.isArray(content[key])) return [...content[key]];
+  if (key === 'socials' && Array.isArray(fallbackSitePayload.socials)) return [...fallbackSitePayload.socials];
+  if (key === 'sections' && Array.isArray(fallbackSitePayload.sections)) return [...fallbackSitePayload.sections];
+  return [];
 }
 
-function saveLocalResourceStore(resource: string, items: any[]): void {
-  localStorage.setItem(`rusatech_cms_${resource}`, JSON.stringify(items));
+function saveLocalResourceStore(resource: string, data: any): void {
+  const { key } = normalizeResourceKey(resource);
+  localStorage.setItem(`rusatech_cms_${key}`, JSON.stringify(data));
 }
 
 export async function fetchAdminResource<T = any>(resource: string): Promise<T> {
+  const { isSingleton } = normalizeResourceKey(resource);
   try {
     const res = await fetch(`${API_BASE}/admin/${resource}`, {
       headers: getAuthHeaders(),
     });
     const parsed = await safeParseJsonResponse(res);
     if (parsed.ok && parsed.data?.data) {
+      saveLocalResourceStore(resource, parsed.data.data);
       return parsed.data.data;
     }
     return getLocalResourceStore(resource) as unknown as T;
@@ -314,6 +468,7 @@ export async function updateAdminResource<T = any>(
   id: string,
   data: any
 ): Promise<T> {
+  const { isSingleton } = normalizeResourceKey(resource);
   const cleanData = data && typeof data === 'object' ? { ...data } : data;
   if (cleanData && typeof cleanData === 'object') {
     delete cleanData._id;
@@ -332,6 +487,19 @@ export async function updateAdminResource<T = any>(
     }
     const parsed = await safeParseJsonResponse(res);
     if (parsed.ok && parsed.data?.data) {
+      // Keep localStorage in sync with server update
+      if (isSingleton) {
+        saveLocalResourceStore(resource, parsed.data.data);
+      } else {
+        const list = getLocalResourceStore(resource);
+        const index = list.findIndex((item: any) => item._id === id || item.id === id);
+        if (index !== -1) {
+          list[index] = parsed.data.data;
+        } else {
+          list.push(parsed.data.data);
+        }
+        saveLocalResourceStore(resource, list);
+      }
       return parsed.data.data;
     }
   } catch (err: any) {
@@ -341,8 +509,15 @@ export async function updateAdminResource<T = any>(
   }
 
   // Fallback update in local storage
+  if (isSingleton) {
+    const existing = getLocalResourceStore(resource);
+    const updated = { ...existing, ...cleanData, updatedAt: new Date().toISOString() };
+    saveLocalResourceStore(resource, updated);
+    return updated as unknown as T;
+  }
+
   const list = getLocalResourceStore(resource);
-  const index = list.findIndex((item) => item._id === id || item.id === id);
+  const index = list.findIndex((item: any) => item._id === id || item.id === id);
   if (index !== -1) {
     list[index] = { ...list[index], ...cleanData, updatedAt: new Date().toISOString() };
   } else {
@@ -410,7 +585,7 @@ export async function deleteAdminResource(
     // fallback
   }
   const list = getLocalResourceStore(resource);
-  const filtered = list.filter((item) => item._id !== id && item.id !== id);
+  const filtered = list.filter((item: any) => item._id !== id && item.id !== id);
   saveLocalResourceStore(resource, filtered);
 }
 
@@ -431,7 +606,7 @@ export async function toggleAdminResource<T = any>(
     // fallback
   }
   const list = getLocalResourceStore(resource);
-  const index = list.findIndex((item) => item._id === id || item.id === id);
+  const index = list.findIndex((item: any) => item._id === id || item.id === id);
   if (index !== -1) {
     list[index].isActive = isActive !== undefined ? isActive : !list[index].isActive;
     saveLocalResourceStore(resource, list);
@@ -457,10 +632,10 @@ export async function reorderAdminResource<T = any>(
   }
   const list = getLocalResourceStore(resource);
   for (const reorder of items) {
-    const found = list.find((item) => item._id === reorder.id || item.id === reorder.id);
+    const found = list.find((item: any) => item._id === reorder.id || item.id === reorder.id);
     if (found) found.order = reorder.order;
   }
-  list.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  list.sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0));
   saveLocalResourceStore(resource, list);
   return list as unknown as T;
 }

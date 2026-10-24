@@ -33,8 +33,12 @@ export function AboutSkillsSection({ about, skills }: AboutSkillsSectionProps) {
     about?.avatar ||
     'https://lh3.googleusercontent.com/aida-public/AB6AXuDRB5o4N_T0B9Z-81nS1_e0T7l9xHqYj8BfD0sW21aX-9xJ7Y7Kz0P4sZt2vD7z8lQ=s400';
 
+  const sectionId = about ? 'about' : 'skills';
+
   return (
-    <section className="w-full px-5 lg:px-12 py-20 relative" id="about">
+    <section className="w-full px-5 lg:px-12 py-20 relative" id={sectionId}>
+      {about && <span id="about" className="absolute -top-24 pointer-events-none" />}
+      {skills && <span id="stack" className="absolute -top-24 pointer-events-none" />}
       <div className="max-w-7xl mx-auto space-y-16">
         {/* About Studio Grid */}
         {about && about.isActive && (
@@ -54,6 +58,12 @@ export function AboutSkillsSection({ about, skills }: AboutSkillsSectionProps) {
                     whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
                     transition={{ duration: 0.5, ease: cubicEntrance }}
                     src={avatarUrl}
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.includes('aida-public')) {
+                        target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCpeLYWljWwHHEy04ie4U-vx2scsaDxGmQLlpJVGmc_LJhtvGJsyBzJhEklZ3PhYmNlLuA0qrBAwj0tV5hpUhxf_xYCGTIk-21Hp1Q4ntRh7TIRK3jzBkEWFyuxhr52OJ3GSMSskLgstjWwn054Qacke3htz0VApieLIqCWQ-vsoaV8DmJG1-ObfJhL0FNlUiifCj5vkbH6uyHTsGV_4g_3NFUjgcdhNkJpGCK_y4vDgc_lUdnns1A';
+                      }
+                    }}
                     alt={about.title || 'Studio Principal'}
                     className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-700"
                     style={{ willChange: 'transform' }}

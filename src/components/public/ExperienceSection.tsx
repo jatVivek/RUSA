@@ -33,7 +33,8 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
   if (activeItems.length === 0) return null;
 
   return (
-    <section className="w-full px-5 lg:px-12 py-20 relative" id="experience">
+    <section className="w-full px-5 lg:px-12 py-20 relative" id="process">
+      <span id="experience" className="absolute -top-24 pointer-events-none" />
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <motion.div
