@@ -112,8 +112,9 @@ export async function runSeed(force = false) {
   }
 
   // 7. Products
-  const prodCount = await Product.countDocuments();
-  if (prodCount === 0 || force) {
+  const existingProducts = await Product.find({});
+  const hasOutdatedProducts = existingProducts.some((p) => p.title === 'Prism Analytics' || p.title === 'NeuralStream V3');
+  if (existingProducts.length === 0 || force || hasOutdatedProducts) {
     await Product.deleteMany({});
     await Product.create(initialProducts);
     console.log(` Created ${initialProducts.length} showcase products`);

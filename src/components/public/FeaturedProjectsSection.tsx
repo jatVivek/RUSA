@@ -76,12 +76,12 @@ export function FeaturedProjectsSection({
           whileInView="visible"
           viewport={defaultViewport}
           variants={staggerContainer(0.1, 0.1)}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {products.map((product) => {
             const coverImg =
               product.images?.[0] ||
-              'https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU';
+              'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80';
 
             return (
               <motion.div
@@ -102,7 +102,7 @@ export function FeaturedProjectsSection({
                 className="bg-[#201f22] rounded-2xl overflow-hidden flex flex-col group border border-[#3d494c]/40 transition-colors"
               >
                 {/* Image Container with scale 1.1->1 reveal and zoom 1.05 on hover */}
-                <div className="relative h-64 w-full overflow-hidden bg-[#353437]">
+                <div className="relative h-60 w-full overflow-hidden bg-[#353437]">
                   <motion.img
                     initial={shouldReduceMotion ? false : { scale: 1.1 }}
                     whileInView={{ scale: 1 }}
@@ -111,18 +111,19 @@ export function FeaturedProjectsSection({
                     alt={product.title}
                     onError={(e) => {
                       const target = e.currentTarget;
-                      if (!target.src.includes('aida-public')) {
-                        target.src = 'https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU';
+                      if (!target.src.includes('unsplash')) {
+                        target.src =
+                          'https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80';
                       }
                     }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     style={{ willChange: 'transform' }}
                   />
-                  <div className="absolute top-3 left-3 flex gap-2 z-10">
-                    <span className="px-2.5 py-1 rounded-full bg-[#131315]/90 backdrop-blur-md text-[var(--color-primary)] font-mono text-[11px] font-semibold">
-                      {product.category || 'B2B SAAS PLATFORM'}
+                  <div className="absolute top-3 left-3 flex flex-wrap gap-2 z-10">
+                    <span className="px-2.5 py-1 rounded-full bg-[#131315]/90 backdrop-blur-md text-[var(--color-primary)] font-mono text-[10px] font-semibold">
+                      {product.category || 'CLIENT WORK'}
                     </span>
-                    <span className="px-2.5 py-1 rounded-full bg-[#1bbd85]/30 text-[#4edea3] font-mono text-[11px] flex items-center gap-1.5">
+                    <span className="px-2.5 py-1 rounded-full bg-[#1bbd85]/30 text-[#4edea3] font-mono text-[10px] flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse" />
                       {product.statusBadge || 'LIVE IN PROD'}
                     </span>
@@ -132,28 +133,28 @@ export function FeaturedProjectsSection({
                 {/* Content Area */}
                 <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-heading text-xl font-bold text-[#e5e1e4] group-hover:text-[var(--color-primary)] transition-colors">
+                    <div className="flex items-start justify-between gap-2">
+                      <h3 className="font-heading text-lg font-bold text-[#e5e1e4] group-hover:text-[var(--color-primary)] transition-colors">
                         {product.title}
                       </h3>
-                      <span className="font-mono text-xs text-[#4edea3] font-semibold">
+                      <span className="font-mono text-xs text-[#4edea3] font-semibold shrink-0">
                         <AnimatedCounter
-                          value={product.metricHighlight || '+240% User Activation'}
+                          value={product.metricHighlight || '+240% Speed'}
                           duration={1.8}
                         />
                       </span>
                     </div>
 
-                    <p className="text-[#bcc9cd] text-sm mt-2 leading-relaxed">
+                    <p className="text-[#bcc9cd] text-xs sm:text-sm mt-2 leading-relaxed">
                       {product.description}
                     </p>
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-1.5 mt-4">
-                      {(product.tags || []).map((tag, idx) => (
+                      {(product.tags || []).slice(0, 4).map((tag, idx) => (
                         <span
                           key={idx}
-                          className="px-2 py-0.5 rounded bg-[#2a2a2c] text-[#869397] font-mono text-[11px]"
+                          className="px-2 py-0.5 rounded bg-[#2a2a2c] text-[#869397] font-mono text-[10px]"
                         >
                           {tag}
                         </span>
@@ -167,11 +168,11 @@ export function FeaturedProjectsSection({
                       onClick={() => onOpenCaseStudy(product)}
                       className="font-medium text-xs text-[var(--color-primary)] hover:underline inline-flex items-center gap-1 cursor-pointer group/btn"
                     >
-                      <span>View Case Study & Architecture Breakdown</span>
+                      <span>Case Study</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-1" />
                     </button>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       {(() => {
                         const safeUrl = sanitizeExternalUrl(product.url);
                         if (!safeUrl) return null;
@@ -183,17 +184,13 @@ export function FeaturedProjectsSection({
                             whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
                             whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
                             transition={springHover}
-                            className="px-2.5 py-1 rounded-md bg-[#2a2a2c] hover:bg-[#353437] text-xs text-[#e5e1e4] font-medium inline-flex items-center gap-1 transition-colors"
+                            className="px-2.5 py-1 rounded-md bg-[var(--color-primary)]/10 hover:bg-[var(--color-primary)] text-[var(--color-primary)] hover:text-black border border-[var(--color-primary)]/30 text-xs font-mono font-semibold inline-flex items-center gap-1 transition-all"
                           >
-                            <span>Visit</span>
+                            <span>Live App</span>
                             <ExternalLink className="w-3 h-3" />
                           </motion.a>
                         );
                       })()}
-
-                      <span className="font-mono text-[11px] text-[#869397]">
-                        {product.metricLabel || '<50ms Latency'}
-                      </span>
                     </div>
                   </div>
                 </div>

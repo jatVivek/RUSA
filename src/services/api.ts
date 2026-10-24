@@ -66,7 +66,17 @@ function enrichWithLocalCmsOverrides(base: PublicSitePayload): PublicSitePayload
     // Collections
     const savedProducts = localStorage.getItem('rusatech_cms_products');
     if (savedProducts) {
-      payload.content.products = JSON.parse(savedProducts);
+      try {
+        const parsedProds = JSON.parse(savedProducts);
+        const isOutdated = Array.isArray(parsedProds) && parsedProds.some((p: any) => p._id === 'prod_1' || p.title === 'Prism Analytics Cloud' || p.title === 'Prism Analytics');
+        if (isOutdated) {
+          localStorage.removeItem('rusatech_cms_products');
+        } else {
+          payload.content.products = parsedProds;
+        }
+      } catch {
+        // ignore
+      }
     }
 
     const savedBlogs = localStorage.getItem('rusatech_cms_blogs');
@@ -428,7 +438,13 @@ function getLocalResourceStore(resource: string): any {
   if (local) {
     try {
       const parsed = JSON.parse(local);
-      if (Array.isArray(parsed)) return parsed;
+      if (Array.isArray(parsed)) {
+        if (key === 'products' && parsed.some((p: any) => p._id === 'prod_1' || p.title === 'Prism Analytics Cloud' || p.title === 'Prism Analytics')) {
+          localStorage.removeItem('rusatech_cms_products');
+        } else {
+          return parsed;
+        }
+      }
     } catch {
       // ignore
     }

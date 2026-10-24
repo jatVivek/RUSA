@@ -95,7 +95,7 @@ export function Navbar({ settings, onOpenAdmin, onOpenCaseStudy }: NavbarProps) 
             onClick={onOpenCaseStudy}
             className="text-[var(--color-primary)] hover:underline text-xs font-semibold tracking-wide flex items-center gap-1 cursor-pointer group"
           >
-            <span>NeuralStream V3</span>
+            <span>Case Studies</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
           </motion.button>
         </nav>
@@ -174,7 +174,7 @@ export function Navbar({ settings, onOpenAdmin, onOpenCaseStudy }: NavbarProps) 
             }}
             className="w-full text-left text-[var(--color-primary)] text-sm py-1 font-semibold flex items-center justify-between"
           >
-            <span>Case Study: NeuralStream V3</span>
+            <span>Case Studies: Client Work</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
           <div className="pt-2 border-t border-[#3d494c]/40 flex gap-2">

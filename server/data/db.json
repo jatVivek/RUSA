@@ -10,28 +10,46 @@
       "updatedAt": "2026-10-13T13:04:45.445Z"
     },
     {
+      "_id": "id_qmbb9k3avmv6plh3l",
       "name": "RUSA TECH Admin",
       "email": "admin@rusatech.com",
       "passwordHash": "$2b$10$P8QF5xQB9z2Jxro9DgrBxeP4554lhIwopHahaSa3Al3pKU/i8j6AW",
       "role": "superadmin",
-      "_id": "id_qmbb9k3avmv6plh3l",
       "createdAt": "2026-10-13T13:20:51.921Z",
       "updatedAt": "2026-10-13T13:20:51.921Z"
     },
     {
+      "name": "RUSA TECH Admin",
+      "email": "admin@rusatech.com",
+      "passwordHash": "$2b$10$cy.SnXHUil0iYuiAN9P8u.FhDQdSrrraVXIwHrAumK6JbiNdnUiX2",
+      "role": "superadmin",
+      "_id": "id_x2fodr7n9mvmqw8xw",
+      "createdAt": "2026-10-24T18:41:32.996Z",
+      "updatedAt": "2026-10-24T18:41:32.997Z"
+    },
+    {
+      "_id": "id_w5qc9hrvjmv6plh6q",
       "name": "RUSA TECH Studio Admin",
       "email": "admin@synthetix.studio",
       "passwordHash": "$2b$10$VB0fb0BwOVNoLMvqfMc9duN914FX6PjLyJsi0jYLIzppH78IuFfze",
       "role": "superadmin",
-      "_id": "id_w5qc9hrvjmv6plh6q",
       "createdAt": "2026-10-13T13:20:52.034Z",
       "updatedAt": "2026-10-13T13:20:52.034Z"
+    },
+    {
+      "name": "RUSA TECH Studio Admin",
+      "email": "admin@synthetix.studio",
+      "passwordHash": "$2b$10$Na3iU2W3uh7FV9Pxlxvl..rrPBxQIbGPRJ2iIz1BbelwcGzWCeHl6",
+      "role": "superadmin",
+      "_id": "id_jdwohdq8kmvmqw90j",
+      "createdAt": "2026-10-24T18:41:33.091Z",
+      "updatedAt": "2026-10-24T18:41:33.091Z"
     }
   ],
   "sitesettingss": [
     {
       "siteTitle": "RUSA TECH",
-      "tagline": "High-Performance Web Engineering & UI/UX Studio",
+      "tagline": "Modern Web Agency & High-Performance Engineering Studio",
       "logoLight": "/logo-light.svg",
       "logoDark": "/logo-dark.svg",
       "favicon": "/favicon.svg",
@@ -44,7 +62,7 @@
       "address": "San Francisco, CA • Orbital Operations Center",
       "_id": "id_8defndyvymv6iwpg7",
       "createdAt": "2026-10-13T10:13:38.647Z",
-      "updatedAt": "2026-10-16T09:56:35.623Z"
+      "updatedAt": "2026-10-24T18:41:33.092Z"
     }
   ],
   "themes": [
@@ -193,7 +211,7 @@
       },
       "_id": "id_i0jkixj18mv6iwpg7",
       "createdAt": "2026-10-13T10:13:38.647Z",
-      "updatedAt": "2026-10-13T13:20:52.037Z"
+      "updatedAt": "2026-10-24T18:41:33.092Z"
     }
   ],
   "sections": [
@@ -204,9 +222,9 @@
       "order": 0,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_vhygn4dpkmv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_7kqycozxtmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "about",
@@ -215,9 +233,9 @@
       "order": 1,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_skvsqhjj0mv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_mm5lwasjfmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "products",
@@ -226,9 +244,9 @@
       "order": 2,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_x48eir1qkmv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_yoxf2kwwnmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "services",
@@ -237,9 +255,9 @@
       "order": 3,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_d8rbzovh8mv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_mw7t67jh7mvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "experience",
@@ -248,9 +266,9 @@
       "order": 4,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_lg46nqqstmv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_025c7evfrmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "skills",
@@ -259,9 +277,9 @@
       "order": 5,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_ru13hyng3mv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_a4wmrzni0mvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "testimonials",
@@ -270,9 +288,9 @@
       "order": 6,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_b4a1ba20umv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_hzoo6lpikmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "blog",
@@ -281,9 +299,9 @@
       "order": 7,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_c614gdkd3mv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_zsdgt6dwmmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     },
     {
       "key": "contact",
@@ -292,9 +310,9 @@
       "order": 8,
       "isActive": true,
       "isMandatory": true,
-      "_id": "id_vx7ltwduqmv6plh6y",
-      "createdAt": "2026-10-13T13:20:52.042Z",
-      "updatedAt": "2026-10-13T13:20:52.042Z"
+      "_id": "id_2g2c1fz2rmvmqw90m",
+      "createdAt": "2026-10-24T18:41:33.094Z",
+      "updatedAt": "2026-10-24T18:41:33.094Z"
     }
   ],
   "heros": [
@@ -336,9 +354,9 @@
       "previewAppImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU",
       "order": 0,
       "isActive": true,
-      "_id": "id_4ny0elvlbmv6plh72",
-      "createdAt": "2026-10-13T13:20:52.046Z",
-      "updatedAt": "2026-10-13T13:20:52.046Z"
+      "_id": "id_xyz5a6taomvmqw90n",
+      "createdAt": "2026-10-24T18:41:33.095Z",
+      "updatedAt": "2026-10-24T18:41:33.095Z"
     }
   ],
   "abouts": [
@@ -363,131 +381,92 @@
       ],
       "order": 0,
       "isActive": true,
-      "_id": "id_8w7y9v1rjmv6plh78",
-      "createdAt": "2026-10-13T13:20:52.052Z",
-      "updatedAt": "2026-10-13T13:20:52.052Z"
+      "_id": "id_6egy8v7wzmvmqw90n",
+      "createdAt": "2026-10-24T18:41:33.095Z",
+      "updatedAt": "2026-10-24T18:41:33.095Z"
     }
   ],
   "products": [
     {
-      "title": "Prism Analytics",
-      "description": "Enterprise real-time telemetry and reporting dashboard handling 100M+ events monthly. Engineered with sub-50ms query responses, 60fps virtualization grids, and complex permission gating.",
+      "title": "Apex Auto Care",
+      "description": "Authorized multi-brand auto garage operating system featuring digital job cards, real-time repair tracking, technician allocation, parts inventory telemetry, and automated GST billing workflows.",
       "images": [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuB-hQX_71e363t0WKA5wsEHXD99U5DcfthqsDvEAK30kKBzJgLSCvpoMdstHdoIo2voJ4HCoLfbORMU7dIyC61GXO-th-RNwie971yBgquKzwn4qkrRvt0vp8WtVA9xUyMpu-QCVDw530109VoDX7VbK6xK8UK1uVLQgydgZC5m-i7YA-lJ7Jtt32EWBtY_V5JEmXW3blBj1q8SvFuPyuhCjCU5N8TRN4FjH9OucatEGansE9oNrpU"
+        "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=80"
       ],
-      "url": "https://prism-analytics.example.com",
-      "slug": "prism-analytics",
-      "category": "B2B SAAS PLATFORM",
-      "statusBadge": "LIVE IN PROD",
-      "metricHighlight": "+240% User Activation",
-      "metricLabel": "<50ms Query Latency",
+      "url": "https://rusa-tech-guarage-management-aoyj.vercel.app/",
+      "slug": "apex-auto-care-garage-management",
+      "category": "AUTOMOTIVE WORKSHOP ERP & SAAS",
+      "statusBadge": "LIVE PRODUCTION",
+      "metricHighlight": "+310% Job Card Efficiency",
+      "metricLabel": "<45ms Real-Time Sync",
       "tags": [
-        "Next.js 15 App Router",
-        "TypeScript Strict",
+        "React 19",
+        "Next.js App Router",
         "Tailwind CSS",
-        "Go Microservices"
+        "GST Invoicing Engine",
+        "Live Job Cards",
+        "Inventory Telemetry"
       ],
       "order": 0,
       "isActive": true,
-      "_id": "id_65kjpuslxmv6plh7b",
-      "createdAt": "2026-10-13T13:20:52.055Z",
-      "updatedAt": "2026-10-13T13:20:52.055Z"
+      "_id": "id_y42lqswtdmvmqw90o",
+      "createdAt": "2026-10-24T18:41:33.096Z",
+      "updatedAt": "2026-10-24T18:41:33.096Z"
     },
     {
-      "title": "Aura Commerce",
-      "description": "Ultra-fast headless luxury retail store featuring an interactive real-time 3D product visualizer, multi-currency localization across 24 regions, and instant zero-friction checkout.",
+      "title": "AutoPrime",
+      "description": "Certified pre-owned car showroom platform with interactive 150-point inspection matrix, transparent multi-tier valuation algorithms, instant EMI calculations, and automated dealership lead routing.",
       "images": [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuBhjzkRdQ4wRb4iTyOO-0H4Mo9ovMLFVWofpZOMvlJMUVlOjM9pRxC9tvv9I1r9vLotFwS0gzt8oD113AUkAoerbKhpPoqJO79eo0xb-HW628TEbKCGhMni4nSHxNJQY1o0C129_JuzM9uZAxHT5cuBJ_8ZQcw3eO_CMt9SdJlJyv_lKegeeJUYijtyps3UggE0nU4nCUBLPjI4yRvpqapNzPY6wm58kRcyVJwqTRDPPGZSuqwqmHE"
+        "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80"
       ],
-      "url": "https://aura-commerce.example.com",
-      "slug": "aura-commerce",
-      "category": "HEADLESS E-COMMERCE",
-      "statusBadge": "GLOBAL LAUNCH",
-      "metricHighlight": "+38% Mobile Conversion",
-      "metricLabel": "99 Lighthouse Score",
+      "url": "https://rusa-tech-pre-owned-cars-mangement.vercel.app/",
+      "slug": "autoprime-pre-owned-cars-management",
+      "category": "DEALERSHIP INVENTORY & MARKETPLACE",
+      "statusBadge": "CERTIFIED 150-PT",
+      "metricHighlight": "<600ms Filter Latency",
+      "metricLabel": "+44% Buyer Inquiries",
       "tags": [
-        "Shopify Plus Headless",
-        "Next.js Edge",
-        "Three.js / WebGL",
-        "Stripe Custom"
+        "TypeScript",
+        "Next.js 15",
+        "Tailwind CSS",
+        "Car Inspection Matrix",
+        "Instant Valuation",
+        "EMI Calculator"
       ],
       "order": 1,
       "isActive": true,
-      "_id": "id_wdopi8ffwmv6plh7b",
-      "createdAt": "2026-10-13T13:20:52.055Z",
-      "updatedAt": "2026-10-13T13:20:52.055Z"
+      "_id": "id_iy3yq9u98mvmqw90o",
+      "createdAt": "2026-10-24T18:41:33.096Z",
+      "updatedAt": "2026-10-24T18:41:33.096Z"
     },
     {
-      "title": "VaultPay Neo-Banking",
-      "description": "Compliant banking portal built for seamless international treasury management, multi-user role access controls, automated ACH transfers, and live audit telemetry.",
+      "title": "Rusa Dental Studio",
+      "description": "Comprehensive patient-facing dental clinic website and 13-module clinic management portal with interactive 3D tooth charting, electronic medical records (EMR), automated scheduling, and procedure billing.",
       "images": [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDbSAZEGKCWxTsuvm-wR0TGavKYBYdJpOkaktYxuUuxJTn-zjWoiZXK7sfgdXHbKqDoHymlO3tJZW0mUxT873e-qEQ3s-QEuvtfgT2QVsD9oCmojPbw86gMS2JPSOOdCp1XClTjSNAxFH2QWrZDzntCKuRl1rNW3CnOZkcUntBqQZ1CVwGsMtPw-7biWjvN_5HiBvKxI47ZZ2POgJwI0Qb2rqRa21rQfRheFkat4o-lRmVCsQc7igc"
+        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80"
       ],
-      "url": "https://vaultpay.example.com",
-      "slug": "vaultpay-banking",
-      "category": "FINTECH WEB PORTAL",
-      "statusBadge": "SOC2 CERTIFIED",
-      "metricHighlight": "$180M+ Volume",
-      "metricLabel": "99.99% Availability",
+      "url": "https://rusa-dental-nh2aqi2ed-rusa4.vercel.app/",
+      "slug": "rusa-dental-studio-management",
+      "category": "HEALTHCARE & CLINIC OS",
+      "statusBadge": "HIPAA COMPLIANT",
+      "metricHighlight": "13-Module Clinic Engine",
+      "metricLabel": "99.98% Uptime SLA",
       "tags": [
-        "React 19",
-        "Node.js Enterprise",
-        "PostgreSQL",
-        "Plaid / Webhooks"
+        "Next.js 15",
+        "Digital EMR",
+        "3D Tooth Charting",
+        "Appointment Engine",
+        "HIPAA VPC",
+        "Procedure Billing"
       ],
       "order": 2,
       "isActive": true,
-      "_id": "id_unhu85wvvmv6plh7b",
-      "createdAt": "2026-10-13T13:20:52.055Z",
-      "updatedAt": "2026-10-13T13:20:52.055Z"
-    },
-    {
-      "title": "Novus Health Telehealth",
-      "description": "Secure video consultation platform, interactive patient chart management, and instant prescription routing. Built from zero to production launch in 6 rapid sprint cycles.",
-      "images": [
-        "https://lh3.googleusercontent.com/aida/AEtjO1XMwk0vjmYiG-c-mPIGezb_SacR2QHiT-jJmxkFIRLbYg6hxGgvBAJZ8xdNGaTI-553skyNG9OIv3004qS_euzSWtAcmRUjp6M284egBBGUx_On4CP8IAlBsSEWtdMu9jPycgPveUabo0r4hPlNbRAbdkZZxvQ4ARXe_zooVS8hB87gbnUQzVRAs91rXA28bTBF0mlj22qUO9vVnCkhPtLZIABLoyh0KBKRT9fr9gxnky5oHdAvWR9gdQ"
-      ],
-      "url": "",
-      "slug": "novus-health",
-      "category": "HEALTHTECH WEB APP",
-      "statusBadge": "HIPAA COMPLIANT",
-      "metricHighlight": "45k+ Active Patients",
-      "metricLabel": "Shipped in 6 Weeks",
-      "tags": [
-        "Next.js 15",
-        "WebRTC Video",
-        "HIPAA Cloud VPC",
-        "Tailwind CSS"
-      ],
-      "order": 3,
-      "isActive": true,
-      "_id": "id_1wyfu29ytmv6plh7b",
-      "createdAt": "2026-10-13T13:20:52.055Z",
-      "updatedAt": "2026-10-13T13:20:52.055Z"
-    },
-    {
-      "title": "NeuralStream V3",
-      "description": "Sub-80ms real-time multi-modal diffusion pipeline handling 45M daily inferences for an enterprise generative suite. Fused custom TensorRT-LLM kernels and client-side WebGPU decoding.",
-      "images": [
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDovZnkwSIWfH25osOnV4OgjZhxZPV-6_xngTLo1Iv23wSR4Vi_lHJI9eO45EVG9ZzdPm7D8H8ElrrNnYuJRKycHlq6_8jLy9fId0ktesUCt8iQj7YlGwrUbu2XQqIpQsBKK3s5QL5wNuVeuhMzlh3ckERKwook_pSliO9Vboc7TK3C4Vyy2olPvOQUbwtey5Wn1PeOGx00kq1mrTF-lA0X2M4opNRQvagUEsIOv7FbtUrrZmZLYYI"
-      ],
-      "url": "https://neuralstream.example.com",
-      "slug": "neuralstream-v3",
-      "category": "WEBGPU + DISTRIBUTED CLUSTER",
-      "statusBadge": "PRODUCTION LIVE v3.4",
-      "metricHighlight": "4.2x Faster Generation",
-      "metricLabel": "78ms P95 Sustained",
-      "tags": [
-        "PyTorch 2.3+",
-        "TensorRT-LLM",
-        "WebGPU WGSL",
-        "Rust Anycast"
-      ],
-      "order": 4,
-      "isActive": true,
-      "_id": "id_1185s3b3emv6plh7b",
-      "createdAt": "2026-10-13T13:20:52.055Z",
-      "updatedAt": "2026-10-13T13:20:52.055Z"
+      "_id": "id_xanm11cgcmvmqw90o",
+      "createdAt": "2026-10-24T18:41:33.096Z",
+      "updatedAt": "2026-10-24T18:41:33.096Z"
     }
   ],
   "services": [
@@ -499,9 +478,9 @@
       "badgeColor": "primary",
       "order": 0,
       "isActive": true,
-      "_id": "id_7zwv3838lmv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_6gjx6otckmvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     },
     {
       "title": "High-Conversion Marketing & Flagship Sites",
@@ -511,9 +490,9 @@
       "badgeColor": "secondary",
       "order": 1,
       "isActive": true,
-      "_id": "id_1froppqfbmv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_hoygt12fqmvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     },
     {
       "title": "UI/UX Design Systems & Frontend",
@@ -523,9 +502,9 @@
       "badgeColor": "tertiary",
       "order": 2,
       "isActive": true,
-      "_id": "id_od8i7etblmv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_r1vene328mvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     },
     {
       "title": "Performance & Core Web Vitals Audits",
@@ -535,9 +514,9 @@
       "badgeColor": "primary",
       "order": 3,
       "isActive": true,
-      "_id": "id_6aebuaqolmv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_jyks7aruzmvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     },
     {
       "title": "API Development & Cloud Infrastructure",
@@ -547,9 +526,9 @@
       "badgeColor": "secondary",
       "order": 4,
       "isActive": true,
-      "_id": "id_7la8lw9ummv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_73aev2wnwmvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     },
     {
       "title": "Sprint Augmentation & Fractional Lead",
@@ -559,9 +538,9 @@
       "badgeColor": "tertiary",
       "order": 5,
       "isActive": true,
-      "_id": "id_litfh0z7lmv6plh7e",
-      "createdAt": "2026-10-13T13:20:52.058Z",
-      "updatedAt": "2026-10-13T13:20:52.058Z"
+      "_id": "id_hoap1mmz1mvmqw90p",
+      "createdAt": "2026-10-24T18:41:33.097Z",
+      "updatedAt": "2026-10-24T18:41:33.097Z"
     }
   ],
   "skills": [
@@ -577,9 +556,9 @@
       ],
       "order": 0,
       "isActive": true,
-      "_id": "id_g4czi4gyxmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_ux2wc4rwumvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "React 19",
@@ -593,9 +572,9 @@
       ],
       "order": 1,
       "isActive": true,
-      "_id": "id_ebfeq6c5zmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_6ld42h3f2mvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "TypeScript 5",
@@ -609,9 +588,9 @@
       ],
       "order": 2,
       "isActive": true,
-      "_id": "id_o2nwdh1q0mv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_lyq3wo8zpmvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Tailwind CSS",
@@ -625,9 +604,9 @@
       ],
       "order": 3,
       "isActive": true,
-      "_id": "id_f20v7z8zpmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_81yhcju7ymvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Framer Motion",
@@ -640,9 +619,9 @@
       ],
       "order": 4,
       "isActive": true,
-      "_id": "id_1fxrwp2symv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_1hgbvea2lmvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Node.js & Express",
@@ -656,9 +635,9 @@
       ],
       "order": 5,
       "isActive": true,
-      "_id": "id_chbsxt49fmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_hmhgpfe6mmvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "PostgreSQL & Drizzle",
@@ -672,9 +651,9 @@
       ],
       "order": 6,
       "isActive": true,
-      "_id": "id_w7mae3irkmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_mrmbmnlv2mvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Redis Caching",
@@ -688,9 +667,9 @@
       ],
       "order": 7,
       "isActive": true,
-      "_id": "id_99otcyr93mv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_d9a2k05jjmvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Vercel Enterprise",
@@ -704,9 +683,9 @@
       ],
       "order": 8,
       "isActive": true,
-      "_id": "id_xqvjvm0bjmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_w3xn30z94mvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Cloudflare Workers",
@@ -720,9 +699,9 @@
       ],
       "order": 9,
       "isActive": true,
-      "_id": "id_kt5uiqf3fmv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_kq6mcmdvamvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     },
     {
       "name": "Stripe Payments",
@@ -736,9 +715,9 @@
       ],
       "order": 10,
       "isActive": true,
-      "_id": "id_3ldoliuzomv6plh7i",
-      "createdAt": "2026-10-13T13:20:52.062Z",
-      "updatedAt": "2026-10-13T13:20:52.062Z"
+      "_id": "id_hyzmj30eumvmqw90q",
+      "createdAt": "2026-10-24T18:41:33.098Z",
+      "updatedAt": "2026-10-24T18:41:33.098Z"
     }
   ],
   "testimonials": [
@@ -752,9 +731,9 @@
       "badgeColor": "primary",
       "order": 0,
       "isActive": true,
-      "_id": "id_hkvuhyf9pmv6plh7l",
-      "createdAt": "2026-10-13T13:20:52.065Z",
-      "updatedAt": "2026-10-13T13:20:52.065Z"
+      "_id": "id_qzpgmxv5rmvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     },
     {
       "quote": "“Our conversion rate jumped 38% immediately after launching the headless storefront RUSA TECH engineered for us. The site is unbelievably fast.”",
@@ -766,9 +745,9 @@
       "badgeColor": "secondary",
       "order": 1,
       "isActive": true,
-      "_id": "id_8k10q0pu5mv6plh7l",
-      "createdAt": "2026-10-13T13:20:52.065Z",
-      "updatedAt": "2026-10-13T13:20:52.065Z"
+      "_id": "id_u8pb07x9pmvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     },
     {
       "quote": "“Working with RUSA TECH felt like having an elite Silicon Valley engineering team embedded directly into our startup. Zero fluff, just flawless web software.”",
@@ -781,9 +760,9 @@
       "badgeColor": "tertiary",
       "order": 2,
       "isActive": true,
-      "_id": "id_bapy4n7ndmv6plh7l",
-      "createdAt": "2026-10-13T13:20:52.065Z",
-      "updatedAt": "2026-10-13T13:20:52.065Z"
+      "_id": "id_o79hpd8jnmvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     }
   ],
   "experiences": [
@@ -799,9 +778,9 @@
       ],
       "order": 0,
       "isActive": true,
-      "_id": "id_e8vqau08gmv6plh7q",
-      "createdAt": "2026-10-13T13:20:52.070Z",
-      "updatedAt": "2026-10-13T13:20:52.070Z"
+      "_id": "id_t1wtzbk17mvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     },
     {
       "company": "RUSA TECH Core Delivery",
@@ -815,9 +794,9 @@
       ],
       "order": 1,
       "isActive": true,
-      "_id": "id_4385fph2mmv6plh7q",
-      "createdAt": "2026-10-13T13:20:52.070Z",
-      "updatedAt": "2026-10-13T13:20:52.070Z"
+      "_id": "id_n3mek7ffimvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     },
     {
       "company": "RUSA TECH Core Delivery",
@@ -831,9 +810,9 @@
       ],
       "order": 2,
       "isActive": true,
-      "_id": "id_lj7mxbrmamv6plh7q",
-      "createdAt": "2026-10-13T13:20:52.070Z",
-      "updatedAt": "2026-10-13T13:20:52.070Z"
+      "_id": "id_eeuo8avgpmvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     },
     {
       "company": "RUSA TECH Core Delivery",
@@ -847,9 +826,9 @@
       ],
       "order": 3,
       "isActive": true,
-      "_id": "id_pb3u17v5nmv6plh7q",
-      "createdAt": "2026-10-13T13:20:52.070Z",
-      "updatedAt": "2026-10-13T13:20:52.070Z"
+      "_id": "id_cb1iivazrmvmqw90r",
+      "createdAt": "2026-10-24T18:41:33.099Z",
+      "updatedAt": "2026-10-24T18:41:33.099Z"
     }
   ],
   "blogs": [
@@ -879,9 +858,9 @@
       "helpfulVotes": 142,
       "order": 0,
       "isActive": true,
-      "_id": "id_88f2wa3rjmv6plh7w",
-      "createdAt": "2026-10-13T13:20:52.076Z",
-      "updatedAt": "2026-10-13T13:20:52.076Z"
+      "_id": "id_lons1q1r2mvmqw90s",
+      "createdAt": "2026-10-24T18:41:33.100Z",
+      "updatedAt": "2026-10-24T18:41:33.100Z"
     },
     {
       "title": "Deterministic Tool Execution with Typed Micro-Contracts in Agent Swarms",
@@ -908,9 +887,9 @@
       "helpfulVotes": 89,
       "order": 1,
       "isActive": true,
-      "_id": "id_ln0hiosnsmv6plh7w",
-      "createdAt": "2026-10-13T13:20:52.076Z",
-      "updatedAt": "2026-10-13T13:20:52.076Z"
+      "_id": "id_ythhi1gr0mvmqw90s",
+      "createdAt": "2026-10-24T18:41:33.100Z",
+      "updatedAt": "2026-10-24T18:41:33.100Z"
     }
   ],
   "offerbanners": [
@@ -922,9 +901,9 @@
       "startsAt": null,
       "endsAt": null,
       "isActive": true,
-      "_id": "id_45hs2gwvmmv6plh8a",
-      "createdAt": "2026-10-13T13:20:52.090Z",
-      "updatedAt": "2026-10-13T13:20:52.090Z"
+      "_id": "id_tnnss2v4dmvmqw90t",
+      "createdAt": "2026-10-24T18:41:33.101Z",
+      "updatedAt": "2026-10-24T18:41:33.101Z"
     }
   ],
   "sociallinks": [
@@ -935,9 +914,9 @@
       "icon": "alternate_email",
       "order": 0,
       "isActive": true,
-      "_id": "id_9f9no9a6wmv6plh8h",
-      "createdAt": "2026-10-13T13:20:52.097Z",
-      "updatedAt": "2026-10-13T13:20:52.097Z"
+      "_id": "id_wq9pgycz9mvmqw90u",
+      "createdAt": "2026-10-24T18:41:33.102Z",
+      "updatedAt": "2026-10-24T18:41:33.102Z"
     },
     {
       "platform": "GitHub",
@@ -946,9 +925,9 @@
       "icon": "terminal",
       "order": 1,
       "isActive": true,
-      "_id": "id_kn5xnxl3bmv6plh8h",
-      "createdAt": "2026-10-13T13:20:52.097Z",
-      "updatedAt": "2026-10-13T13:20:52.097Z"
+      "_id": "id_7grk9vizymvmqw90u",
+      "createdAt": "2026-10-24T18:41:33.102Z",
+      "updatedAt": "2026-10-24T18:41:33.102Z"
     },
     {
       "platform": "RSS",
@@ -957,9 +936,9 @@
       "icon": "rss_feed",
       "order": 2,
       "isActive": true,
-      "_id": "id_koewzex6nmv6plh8h",
-      "createdAt": "2026-10-13T13:20:52.097Z",
-      "updatedAt": "2026-10-13T13:20:52.097Z"
+      "_id": "id_mz16lh7jymvmqw90u",
+      "createdAt": "2026-10-24T18:41:33.102Z",
+      "updatedAt": "2026-10-24T18:41:33.102Z"
     }
   ],
   "contactmessages": [
@@ -971,9 +950,9 @@
       "company": "Apex Capital",
       "message": "Looking to benchmark your sub-millisecond LLM latency node across our high-frequency hedge fund research pipeline.",
       "isRead": false,
-      "_id": "id_3e8cafjrrmv6plh8w",
-      "createdAt": "2026-10-13T13:20:52.112Z",
-      "updatedAt": "2026-10-13T13:20:52.112Z"
+      "_id": "id_iikrdd05mmvmqw90v",
+      "createdAt": "2026-10-24T18:41:33.103Z",
+      "updatedAt": "2026-10-24T18:41:33.103Z"
     },
     {
       "name": "Kaelen Voss",
@@ -983,9 +962,9 @@
       "company": "Hyperion Robotics",
       "message": "Need full security and latency audit of our edge robotics telemetry cluster before series B closing.",
       "isRead": false,
-      "_id": "id_68qnu97i7mv6plh8w",
-      "createdAt": "2026-10-13T13:20:52.112Z",
-      "updatedAt": "2026-10-13T13:20:52.112Z"
+      "_id": "id_ssc6modgwmvmqw90v",
+      "createdAt": "2026-10-24T18:41:33.103Z",
+      "updatedAt": "2026-10-24T18:41:33.103Z"
     },
     {
       "name": "Sarah Takahashi",
@@ -995,21 +974,9 @@
       "company": "Sora Health",
       "message": "Received proposal. Coordinating scheduling with our CTO for next Tuesday deep dive session.",
       "isRead": true,
-      "_id": "id_3nitopp3nmv6plh8w",
-      "createdAt": "2026-10-13T13:20:52.112Z",
-      "updatedAt": "2026-10-13T13:20:52.112Z"
-    },
-    {
-      "name": "Security Test",
-      "email": "test@example.com",
-      "message": "This is a test message to verify safe response",
-      "projectType": "SaaS Web App",
-      "budget": "$15k – $30k",
-      "company": "",
-      "isRead": false,
-      "_id": "id_lt3w1bx7smv9izh72",
-      "createdAt": "2026-10-15T12:39:06.446Z",
-      "updatedAt": "2026-10-15T12:39:06.446Z"
+      "_id": "id_kolq6hbulmvmqw90v",
+      "createdAt": "2026-10-24T18:41:33.103Z",
+      "updatedAt": "2026-10-24T18:41:33.103Z"
     }
   ]
 }
